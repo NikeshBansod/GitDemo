@@ -1,0 +1,51 @@
+@media screen and (min-width : 768px) and (max-width : 1000px) {
+.home-para {
+    width: 52%;
+}
+.login {
+    width: 48%;
+}
+}
+@media screen and (min-width : 250px) and (max-width : 767px) {
+/* .home-para {
+    width: 100%;
+	padding: 10px 0 10px 10px;
+}
+.login {
+    width: 100%;
+	background:#114997 url(../images/loginbox.png) no-repeat center bottom;
+    margin: 0 auto!important;
+	
+} */
+.para2 {
+    padding: 0px 10px 10px 0px;
+}
+.logindetails{
+	margin:0 auto;
+	float:none}
+
+.header-inside-cont {
+    text-align: left;
+}
+.insideheader {
+    font-size: 14px;
+}	
+.insidebtn{ padding-left:5%}
+}
+@media screen and (min-width : 250px) and (max-width : 800px) {
+.det-row-col{width:100%; float:left; padding:10px 2%}	
+}
+@media screen and (min-width : 250px) and (max-width : 500px) {
+.user-name {
+    padding: 10px 3px 0 10px;
+}
+.droparrow {
+    padding-left: 0px;
+}
+.user-mob {
+    right: 0px;
+}
+}
+@media screen and (min-width : 300px) and (max-width : 470px) {
+
+}

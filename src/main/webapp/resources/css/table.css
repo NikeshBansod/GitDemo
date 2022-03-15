@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+table#mytable { 
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-family: Agenda-Light, sans-serif;
+  background: #333; color: #fff;
+  text-rendering: optimizeLegibility;
+  border-radius: 5px;
+  width: 100%; 
+}
+
+table#mytable thead th { }
+table#mytable thead th, table#miyazaki tbody td { 
+  padding: .5rem; font-size: 18px;     background: #35a6b4;
+}
+table#mytable tbody td { 
+  padding: .5rem; font-size: 0.8rem;
+  color: #444; background: #eee; 
+}
+table#mytable tbody tr:not(:last-child) { 
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;  
+}
+
+@media screen and (max-width: 1023px) {
+	table#mytable { 
+  width: 95%; 
+}
+  table#mytable caption { background-image: none; }
+  table#mytable thead { display: none; }
+  table#mytable tbody td { 
+    display: block; padding: .6rem; 
+  }
+/*  table#miyazaki tbody tr td:first-child { 
+    background: #666; color: #fff; 
+  }*/
+table#mytable tbody tr td:last-child { 
+   border-bottom:1px;
+   border-bottom-style:solid;
+  }
+table#mytable tbody td:before { 
+   content: attr(data-th); 
+   font-weight: bold;
+   display: inline-block;
+   width: 6rem;  
+	
+  }
+}
+@media (min-width: 1024px) and (max-width:1275px)
+{
+	table#mytable thead th { }
+table#mytable thead th, table#miyazaki tbody td { 
+    padding: .1rem; font-size: 0.7rem;
+    text-align:center;
+}
+table#mytable tbody td { 
+  padding: .1em; font-size: 0.7rem;
+  color: #444; background:#eee;
+}
+}

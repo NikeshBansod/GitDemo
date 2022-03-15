@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'HelveticaNeueL';
+    src: url('../fonts/HelveticaNeue-Light.eot');
+    src: url('../fonts/HelveticaNeue-Light.eot?#iefix') format('eot'), url('../fonts/HelveticaNeue-Light.woff') format('woff'), url('../fonts/HelveticaNeue-Light.woff2') format('woff2'), url('../fonts/HelveticaNeue-Light.ttf') format('truetype'), url('../fonts/HelveticaNeue-Light.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueM';
+    src: url('../fonts/helveticaneueltpro-md.eot');
+    src: url('../fonts/helveticaneueltpro-md.eot?#iefix') format('eot'), url('../fonts/helveticaneueltpro-md.woff') format('woff'), url('../fonts/helveticaneueltpro-md.woff2') format('woff2'), url('../fonts/helveticaneueltpro-md.ttf') format('truetype'), url('../fonts/helveticaneueltpro-md.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.smk_accordion {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 30px;
+    /*  margin-top: 25px;*/
+}
+
+/**
+ * --------------------------------------------------------------
+ * Section
+ * --------------------------------------------------------------
+ */
+.smk_accordion .accordion_in {
+    position: relative;
+    /*  z-index: 10;*/
+    margin-bottom: 2px;
+    overflow: hidden;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+}
+
+/**
+ * --------------------------------------------------------------
+ * Head
+ * --------------------------------------------------------------
+ */
+.smk_accordion .accordion_in .acc_head {
+    position: relative;
+    /*  background: #fef4e0;*/
+    padding: 12px 20px 12px 10px;
+    font-size: 16px;
+    display: block;
+    cursor: pointer;
+    font-weight: normal;
+    color: #fff;
+    /*  border-radius:0px;
+  -webkit-border-radius:0px;
+  -moz-border-radius:0px;*/
+}
+
+.smk_accordion .accordion_in .acc_head .acc_icon_expand {
+    display: block;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -9px;
+    background: url(../accordion/plusminus.png) center 0;
+}
+
+/**
+ * --------------------------------------------------------------
+ * Content
+ * --------------------------------------------------------------
+ */
+.smk_accordion .accordion_in .acc_content {
+    /*  background: #f4f4f4;*/
+    padding: 10px 25px 20px;
+    border-top: none;
+}
+
+.acc_content p {
+    font-family: 'roboreg';
+    color: #666666;
+    font-weight: normal;
+    text-align: justify;
+    line-height: 25px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+.smk_accordion .accordion_in .acc_content h1:first-of-type, .smk_accordion .accordion_in .acc_content h2:first-of-type, .smk_accordion .accordion_in .acc_content h3:first-of-type, .smk_accordion .accordion_in .acc_content h4:first-of-type, .smk_accordion .accordion_in .acc_content h5:first-of-type, .smk_accordion .accordion_in .acc_content h6:first-of-type {
+    margin-top: 0px;
+}
+
+/**
+ * --------------------------------------------------------------
+ * General
+ * --------------------------------------------------------------
+ */
+.smk_accordion .accordion_in:first-of-type, .smk_accordion .accordion_in:first-of-type .acc_head {
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.smk_accordion .accordion_in:last-of-type, .smk_accordion .accordion_in:last-of-type .acc_content {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.smk_accordion .accordion_in.acc_active > .acc_head .acc_icon_expand {
+    background: url(../accordion/plusminus.png) center -18px;
+}
+
+.smk_accordion.acc_with_icon .accordion_in .acc_head {
+    padding-left: 15px;
+    font-weight: bold;
+    background: #337ab7;
+}
+
+.smk_accordion.acc_with_icon .accordion_in .acc_content {
+    /* padding-left: 10px; */
+    background: #fff;
+    /* border-bottom: 2px solid #e1e1e1; */
+}
+
+.acc_content span {
+    color: #db0506;
+}
+
+.smk_accordion .accordion_in.acc_active > .acc_content {
+    display: block;
+}
+
+.smk_accordion .accordion_in.acc_active > .acc_head {
+}

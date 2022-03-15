@@ -1,0 +1,1525 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	
+
+    <definition name="common-login" template="/WEB-INF/layout/gstn-login.jsp">
+    	<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+		
+	 <definition name="common-home" template="/WEB-INF/layout/gstn-home.jsp">
+	 	<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
+	 <definition name="common-index" template="/WEB-INF/layout/gstn-index.jsp">
+		<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
+	<definition name="common-crud" template="/WEB-INF/layout/gstn-crud.jsp">
+		<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
+	<definition name="common-invoice" template="/WEB-INF/layout/gstn-invoice.jsp">
+		<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
+	 
+	<!-- LOGIN PAGE -->
+	<!--<definition name="login" extends="common-login">
+		<put-attribute name="title" value="GSTN Login Page" />
+		<put-attribute name="body" value="/WEB-INF/views/public/login.jsp" />
+		<put-attribute name="current" value="login" />
+	</definition> -->
+	
+	<!-- HOME PAGE -->
+	<!-- <definition name="home" extends="common-index">
+		<put-attribute name="title" value="GSTN Home Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/home.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+
+	<!-- REGISTRATION PAGE -->
+	<!-- <definition name="registration" extends="common-home">
+		<put-attribute name="title" value="GSTN Registration Page" />
+		<put-attribute name="body" value="/WEB-INF/views/public/registration.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- VIEW MANAGE-MY-PROFILE PAGE -->
+	<!-- <definition name="view-manageMyProfile" extends="common-home">
+		<put-attribute name="title" value="My Profile Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/viewManageMyProfile.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- EDIT MANAGE-MY-PROFILE PAGE -->
+	<!-- <definition name="edit-manageMyProfile" extends="common-home">
+		<put-attribute name="title" value="Edit My Profile Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/editManageMyProfile.jsp" />
+		<put-attribute name="current" value="myProfile" />
+	</definition> -->
+	
+	<!-- LIST MY SERVICE CATALOGUE PAGE -->
+	<!-- <definition name="list-manageMyServiceCatalogue" extends="common-crud">
+		<put-attribute name="title" value="My Service Catalogue Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listManageMyServiceCatalogue.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- ADD SERVICE CATALOGUE PAGE -->
+	<!-- <definition name="add-manageMyServiceCatalogue" extends="common-home">
+		<put-attribute name="title" value="Add Service Catalogue Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addManageMyServiceCatalogue.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+
+	
+	<!-- VIEW PROFILE MANAGEMENT -->
+	<definition name="view-profileManagement" extends="common-home">
+		<put-attribute name="title" value="Profile Management Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/viewProfileManagement.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- EDIT ORGANIZATION MASTER PAGE -->
+	<!-- <definition name="edit-organizationMaster" extends="common-home">
+		<put-attribute name="title" value="Edit Organization Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/editOrganizationMaster.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+ -->	
+	<!-- EDIT SERVICE CATALOGUE PAGE -->
+	<!-- <definition name="edit-manageServiceCatalogue" extends="common-home">
+		<put-attribute name="title" value="Add Service Catalogue Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/editManageMyServiceCatalogue.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+		
+		
+	
+	<!-- ADD PO DETAILS PAGE -->
+	<!-- <definition name="add-PoDetails" extends="common-home">
+		<put-attribute name="title" value="ADD PoDetails Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addPoDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- EDIT PO DETAILS PAGE -->
+
+<!-- 	<definition name="edit-ManagePoDetails" extends="common-home">
+		<put-attribute name="title" value="EDIT Service PO Details" />
+		<put-attribute name="body" value="/WEB-INF/views/private/editPoDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- MANAGE PO DETAILS PAGE -->
+	
+	<!-- <definition name="list-managePoDetails" extends="common-home">
+		<put-attribute name="title" value="Manage PODetails Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listPoDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- LIST OF MANAGE OFFERS PAGE -->
+	<!-- <definition name="list-manageOffers" extends="common-home">
+		<put-attribute name="title" value="My Offers Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listOfManageOffers.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+
+	<!-- Add OF MANAGE OFFERS PAGE -->
+	<definition name="add-manageOffers" extends="common-home">
+		<put-attribute name="title" value="My Offers Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addManageOffers.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+		<!-- Edit OF MANAGE OFFERS PAGE -->
+	<definition name="edit-manageOffers" extends="common-home">
+		<put-attribute name="title" value="My Offers Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/editManageOffers.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+
+	<!-- LIST SECONDARY USER PAGE -->
+	<!-- <definition name="list-secondaryUserPage" extends="common-crud">
+		<put-attribute name="title" value="List Secondary User Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listSecondaryUsers.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- EDIT SECONDARY USER PAGE -->
+	<!-- <definition name="edit-secondaryUserPage" extends="common-crud">
+		<put-attribute name="title" value="List Secondary User Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/editSecondaryUser.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->	
+	
+	<!-- LIST PRODUCTS PAGE -->
+	 <!-- <definition name="list-productCatalogue" extends="common-crud">
+		<put-attribute name="title" value="List Products Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listProducts.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>  -->
+	
+	<!-- EDIT PRODUCTS PAGE -->
+	 <!-- <definition name="edit-Product" extends="common-crud">
+		<put-attribute name="title" value="Edit Products Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/editProducts.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>  -->	
+	
+	<!-- GENERATE INVOICE PAGE -->
+	<definition name="add-generateInvoice" extends="common-invoice">
+		<put-attribute name="title" value="Generate Invoice Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addGenerateInvoice.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+		<!-- CONFIRM INVOICE PAGE -->
+	<definition name="confirm-invoiceDetails" extends="common-invoice">
+		<put-attribute name="title" value="Generate Invoice Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addConfirmInvoiceDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Add OF MANAGE OFFERS PAGE -->
+	<!-- <definition name="add-gstinDetails" extends="common-home">
+		<put-attribute name="title" value="GSTIN Details Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addGstinDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- LIST GTSIN USER MAPPING PAGE -->
+	<definition name="list-gstinUserMapping" extends="common-crud">
+		<put-attribute name="title" value="GSTIN User Mapping Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listGstinUserMapping.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+		<!-- Edit OF MANAGE OFFERS PAGE -->
+	<!-- <definition name="edit-gstinDetails" extends="common-home">
+		<put-attribute name="title" value="Edit Gstin Details" />
+		<put-attribute name="body" value="/WEB-INF/views/private/editGstinDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- EDIT GTSIN USER MAPPING PAGE -->
+	<definition name="edit-gstinUserMapping" extends="common-crud">
+		<put-attribute name="title" value="GSTIN User Mapping Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/editGstinUserMapping.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	
+	<!-- PREVIEW INVOICE PAGE -->
+	<definition name="preview-invoiceDetails" extends="common-invoice">
+		<put-attribute name="title" value="Invoice Preview Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/previewInvoiceDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+
+	<!--  INVOICE EXCEPTION PAGE	
+	<definition name="invoice-exception" extends="common-invoice">
+		<put-attribute name="title" value="Invoice Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/invoiceException.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- <definition name="list-myInvoicesPage" extends="common-home">
+		<put-attribute name="title" value="Invoice Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listInvoicesPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 
+	
+	<definition name="view-invoiceDetailsPage" extends="common-home">
+		<put-attribute name="title" value="Invoice Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/viewInvoiceDetailsPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+		<!-- REGISTRATION PAGE -->
+	<!-- <definition name="logoUploadPage" extends="common-home">
+		<put-attribute name="title" value="Upload Organization Logo" />
+		<put-attribute name="body" value="/WEB-INF/views/private/uploadOrgLogo.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	 -->
+	<!-- NOTIFICATIONS -->
+<!-- 	<definition name="list-notifications" extends="common-home">
+		<put-attribute name="title" value="Notifications Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listNotificationsPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<definition name="list-adminNotifications" extends="common-home">
+		<put-attribute name="title" value="Notifications Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/listAdminNotificationsPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="add-notification" extends="common-home">
+		<put-attribute name="title" value="Add Notifications Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/addNotificationsPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 
+	
+	<!-- ADMIN LOGIN -->
+	 <definition name="idtlogin" extends="common-login">
+		<put-attribute name="title" value="GSTN Login Page" />
+		<put-attribute name="body" value="/WEB-INF/views/public/adminLogin.jsp" />
+		<put-attribute name="current" value="login" />
+	</definition>
+	
+	<!-- ADMIN HOME PAGE -->
+	<definition name="idthome" extends="common-index">
+		<put-attribute name="title" value="GSTN Home Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/adminHome.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	
+	<!-- ADMIN HOME PAGE -->
+	<definition name="list-Feedback" extends="common-home">
+		<put-attribute name="title" value="GSTN Home Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/listFeedbackDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	<definition name="edit-adminNotifications" extends="common-home">
+		<put-attribute name="title" value="Edit Notifications Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/editNotificationsPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 
+	
+	<!-- GIO GST USER LOGIN PAGE -->
+	<definition name="login-jioGst" extends="common-crud">
+		<put-attribute name="title" value="JIO GST Login Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/loginForUpload.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- <definition name="upload-jioGst" extends="common-crud">
+		<put-attribute name="title" value="JIO GST Upload Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/UploadToAsp.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- HOME PAGE -->
+	<definition name="asp-home" extends="common-crud">
+		<put-attribute name="title" value="ASP Home Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/ASPHome.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	
+	<!-- LIST HSN CODE -->
+	<!-- <definition name="list-HSNCode" extends="common-crud">
+		<put-attribute name="title" value="HSN Code Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/listHsnCode.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- EDIT HSN CODE -->
+	<!-- <definition name="edit-HSNDetails" extends="common-crud">
+		<put-attribute name="title" value="Edit HSN Code Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/editHsnCode.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- LIST SAC CODE -->
+	<!-- <definition name="list-SACCode" extends="common-crud">
+		<put-attribute name="title" value="SAC Code Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/listSacCode.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- EDIT SAC CODE -->
+	<!-- <definition name="edit-SACCode" extends="common-crud">
+		<put-attribute name="title" value="Edit SAC Code Page" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/editSacCode.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- <definition name="upload-setting" extends="common-crud">
+		<put-attribute name="title" value="JIO GST Upload Setting" />
+		<put-attribute name="body" value="/WEB-INF/views/private/uploadAspSetting.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+		
+	<!-- <definition name="history-jioGst" extends="common-crud">
+		<put-attribute name="title" value="JIO GST History Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/uploadHistory.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- INVOICE CREDIT NOTE DEBIT NOTE PAGE-->
+	<!-- definition name="view-cn-dn-invoice-page" extends="common-invoice">
+		<put-attribute name="title" value="Invoice CN-DN Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/invoiceCNDNPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- PRE CN DN PAGE -->
+	<!-- <definition name="pre-cn-dn-invoice-page" extends="common-invoice">
+		<put-attribute name="title" value="Invoice CN-DN Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/preCNDNPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- CUSTOM ERROR PAGE -->	
+	<definition name="customErrorPage" extends="common-invoice">
+		<put-attribute name="title" value="Error Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/customErrorPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Download Pdf  -->
+	<definition name="downloadpdf" extends="common-invoice">
+		<put-attribute name="title" value="download pdf" />
+		<put-attribute name="body" value="/WEB-INF/views/private/downloadInvoicePdf.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="add-manageDashboardDetalis" extends="common-home">
+		<put-attribute name="title" value="Add Dashboard Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/dashboardDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+
+	<!-- Wizard UI --> 
+	
+	<!-- Wizard Home Base Page -->
+    <definition name="wizard-base-definition" template="/WEB-INF/layout/wizard-gstn-home-layout.jsp">
+        <put-attribute name="header" value="/WEB-INF/layout/wizard-gstn-home-header.jsp" /> 
+        <put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/wizard-gstn-footer.jsp" />  
+    </definition>   
+  	
+	 <!-- Wizard Login/Registration Base Page -->	
+	<!-- <definition name="wizard-common-login" template="/WEB-INF/layout/wizard-gstn-login.jsp">
+		<put-attribute name="header" value="/WEB-INF/layout/wizard-gstn-login-header.jsp" />
+		<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" /> 
+        <put-attribute name="footer" value="/WEB-INF/layout/wizard-gstn-footer.jsp" />
+	</definition> -->
+	        
+	<definition name="wi-ewayBillBase" template="/WEB-INF/layout/gstn-wiewaybillbase.jsp">
+		<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp" />
+	</definition>
+	
+	<!-- Wizard Base Page to show List of rows-->
+    <definition name="wizard-base-list-definition" template="/WEB-INF/layout/wizard-base-list-layout.jsp">
+        <put-attribute name="header" value="/WEB-INF/layout/wizard-gstn-home-header.jsp" />
+        <put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/layout/wizard-gstn-footer.jsp" />  
+    </definition> 
+    
+   <!-- Wizard Home Page 
+  	<definition name="wHome" extends="wizard-base-definition">  
+		<put-attribute name="title" value="JioGST Bill Lite" />
+  		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardHome.jsp" />
+  	</definition> -->
+  	
+  	<!-- HOME PAGE -->
+	<!-- <definition name="wAsp-home" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardASPHome.jsp" />
+	</definition> -->
+	
+	<!-- Redirection of link 
+	<definition name="detectDecive" extends="wizard-common-login">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/public/detectingDevice.jsp" />
+		<put-attribute name="current" value="login" />
+	</definition>
+   
+	Wizard Login Page
+	<definition name="wLogin" extends="wizard-common-login">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/public/wizardLogin.jsp" />
+		<put-attribute name="current" value="login" />
+	</definition> -->
+	
+	<!--Wizard Registration Page
+    <definition name="wRegistration" extends="wizard-common-login">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+        <put-attribute name="body" value="/WEB-INF/views/public/wizardRegistration.jsp" />  
+		<put-attribute name="current" value="" />
+    </definition>   -->
+  
+	<!-- GIO GST USER LOGIN PAGE -->
+	<!-- <definition name="wLogin-jioGst" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardLoginForUpload.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="wUpload-jioGst" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardUploadToAsp.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- <definition name="wUpload-setting" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardUploadAspSetting.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="wHistory-jioGst" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardUploadHistory.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+  	<!-- Wizard Generate Invoice Page
+  	<definition name="wGenerateInvoice" extends="wizard-base-definition"> 
+		<put-attribute name="title" value="JioGST Bill Lite" />
+  		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardGenerateInvoice.jsp" />
+  	</definition> -->
+  	
+  	<!-- Wizard list of Invoice history
+  	<definition name="wList-myInvoicesPage" extends="wizard-base-definition">  
+		<put-attribute name="title" value="JioGST Bill Lite" />
+  		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardListInvoicesPage.jsp" />
+  	</definition>  -->
+	
+	<!-- E-Way Bill Page -->
+	<!--	<definition name="add-eWayBillPage" extends="common-invoice">
+		<put-attribute name="title" value="Generate E-Way Bill Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+		
+	<!-- Cancel E-Way Bill Page -->
+	<!-- <definition name="cancel-eWayBillPage" extends="common-invoice">
+		<put-attribute name="title" value="Cancel E-Way Bill Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/cancelEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- Cancel Generic E-Way Bill Page -->
+	<!-- <definition name="cancel-genEWayBillPage" extends="common-invoice">
+		<put-attribute name="title" value="Cancel Generic E-Way Bill Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/cancelGenEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- Cancel Wizard Generic E-Way Bill Page
+	<definition name="cancel-wizardGenEWayBillPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="Cancel Wizard Generic E-Way Bill Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardCancelGenEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- Preview E-Way Bill Page 
+	<definition name="list-eWayBillPage" extends="common-invoice">
+		<put-attribute name="title" value="Preview E-Way Bill Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/previewEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	
+	<!-- Wizard Invoice history 
+	<definition name="wView-invoiceDetailsPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardViewInvoiceDetailsPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!--Wizard EDIT ORGANIZATION MASTER PAGE
+	<definition name="wEdit-organizationMaster" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardEditOrganizationMaster.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	 -->
+	
+	<!-- Wizard Logo Upload PAGE
+	<definition name="wLogoUploadPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardUploadOrgLogo.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+		
+	<!--Wizard MASTER VIEW MANAGE PRODUCT DETAILS PAGE 
+	<definition name="wList-productCatalogue" extends="wizard-base-list-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardListProducts.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	-->	
+	
+	<!-- Wizard MASTER VIEW MANAGE SERVICE CATALOGUE PAGE
+	<definition name="wList-manageMyServiceCatalogue" extends="wizard-base-list-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardListManageMyServiceCatalogue.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- Wizard MASTER EDIT SERVICE CATALOGUE PAGE -->
+	<!-- <definition name="wEdit-manageServiceCatalogue" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardEditManageMyServiceCatalogue.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->			
+	
+	<!-- Wizard PRE CN DN PAGE
+	<definition name="wPre-cn-dn-invoice-page" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardPreCNDNPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	 -->
+	
+	<!-- Wizard LIST SECONDARY USER PAGE
+	<definition name="wList-secondaryUserPage" extends="wizard-base-list-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardListSecondaryUsers.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- Wizard EDIT SECONDARY USER PAGE
+	<definition name="wEdit-secondaryUserPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardEditSecondaryUser.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->	
+	
+	<!-- Wizard List OF MANAGE OFFERS PAGE
+	<definition name="wList-gstinDetails" extends="wizard-base-list-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardListGstinDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- Wizard Add OF MANAGE OFFERS PAGE
+	<definition name="wAdd-gstinDetails" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardAddGstinDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- Wizard Edit OF MANAGE OFFERS PAGE
+	<definition name="wEdit-gstinDetails" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardEditGstinDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- Wizard INVOICE CREDIT NOTE DEBIT NOTE PAGE
+	<definition name="wView-cn-dn-invoice-page" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardInvoiceCNDNPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+		
+	<!-- Wizard master excel PAGE
+	<definition name="wMasterExcelUploadPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardUploadMasterExcel.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	-->
+	
+	<!--  INVOICE EXCEPTION PAGE
+	<definition name="wInvoiceException" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardInvoiceException.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>  -->	
+	
+	<!-- Preview E-Way Bill Page
+	<definition name="wList-eWayBillPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardPreviewEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- <definition name="wlist-wizardEWayBillPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardaddGenericEwayBill.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->	
+	
+	<!-- E-Way Bill Page
+	<definition name="wAdd-eWayBillPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardAddEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- Cancel E-Way Bill Page -->
+	<!-- <definition name="wCancel-eWayBillPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardCancelEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->	
+	
+	<!-- <definition name="add-wizardLoginGenericEwayBill" extends="wizard-base-definition">
+		<put-attribute name="title" value="Login Generic E-way Bill" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardEWayBillLoginPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->	
+	
+	<!-- INVALID TOKEN ERROR PAGE	
+	<definition name="invalid-token-page" extends="common-invoice">
+		<put-attribute name="title" value="Error Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/custom_invalid_token.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	
+	
+	<definition name="wInvalid-token-page" extends="wizard-base-definition">
+		<put-attribute name="title" value="Error Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardInvalidToken.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->	
+
+	<!-- Generate E-way Bill 
+	<definition name="add-generateGenericEwayBill" extends="common-invoice">
+		<put-attribute name="title" value="Generate Generic E-way Bill" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addGenericEwayBill.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+		
+	<definition name="add-loginGenericEwayBill" extends="common-invoice">
+		<put-attribute name="title" value="Login Generic E-way Bill" />
+		<put-attribute name="body" value="/WEB-INF/views/private/eWayBillLoginPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+			
+	<!-- Preview E-Way Bill Page
+	<definition name="list-eWayBills" extends="common-invoice">
+		<put-attribute name="title" value="List E-Way Bill Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listEWayBill.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+			
+	 <!-- Without Invoice Eway Bill page 
+	<definition name="wAdd-wIEWayBillPage" extends="wi-ewayBillBase">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addWIEwayBill.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- <definition name="footer-page" extends="common-home">
+		<put-attribute name="title" value="GSTN Home Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/footerPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+		 
+	 <!-- Preview Generic E-Way Bill Page
+	<definition name="wPreview-eWayBillPage" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardPreviewWIEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />		
+	</definition> -->			
+	
+	<!-- dashboardpage
+     <definition name="dashboardDetails" extends="common-home">
+         <put-attribute name="title" value="Dashboard page" />
+         <put-attribute name="body" value="/WEB-INF/views/private/dashboardDetails.jsp" />
+         <put-attribute name="current" value="" />
+     </definition> -->
+     
+      <!-- <definition name="dashboardListInvoicePage" extends="common-home">
+         <put-attribute name="title" value="Dashboard List page" />
+         <put-attribute name="body" value="/WEB-INF/views/private/dashboardListInvoicePage.jsp" />
+         <put-attribute name="current" value="" />
+     </definition> -->
+     
+     <!--  <definition name="dashboardListCNDNPage" extends="common-home">
+         <put-attribute name="title" value="Dashboard CNDNList page" />
+         <put-attribute name="body" value="/WEB-INF/views/private/dashboardListCNDNPage.jsp" />
+         <put-attribute name="current" value="" />
+     </definition> -->
+     
+     <!--  <definition name="dashboardListEwaybillPage" extends="common-home">
+         <put-attribute name="title" value="Dashboard ewayBillList page" />
+         <put-attribute name="body" value="/WEB-INF/views/private/dashboardListEwaybillPage.jsp" />
+         <put-attribute name="current" value="" />
+     </definition> -->
+     
+     <!-- <definition name="viewCNDNDashboardPage" extends="common-home">
+         <put-attribute name="title" value="Dashboard CNDN page" />
+         <put-attribute name="body" value="/WEB-INF/views/private/viewCNDNDashboardPage.jsp" />
+         <put-attribute name="current" value="" />
+     </definition> -->
+     
+    <!--  <definition name="dashboardListInvoiceEwaybillPage" extends="common-home">
+         <put-attribute name="title" value="Dashboard Invoice Ewaybill page" />
+         <put-attribute name="body" value="/WEB-INF/views/private/dashboardListInvoiceEwaybillPage.jsp" />
+         <put-attribute name="current" value="" />
+     </definition> -->
+     
+     <!-- <definition name="viewInvoiceEwaybillDashboardPreviewPage" extends="common-home">
+         <put-attribute name="title" value="Dashboard Invoice EwayBill Preview page" />
+         <put-attribute name="body" value="/WEB-INF/views/private/viewInvoiceEwaybillDashboardPreviewPage.jsp" />
+         <put-attribute name="current" value="" />
+     </definition> -->
+
+  	<!-- Wizard Purchase Entries Page
+  	<definition name="wAdd-generatePurchaseEntryInvoice" extends="wizard-base-definition"> 
+		<put-attribute name="title" value="JioGST Bill Lite" />
+  		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardGeneratePurchaseEntryInvoice.jsp" />
+  	</definition> 
+  	
+  	Wizard Purchase Entry History
+  	<definition name="wlist-myPurchaseEntriesPage" extends="wizard-base-definition">  
+		<put-attribute name="title" value="JioGST Bill Lite" />
+  		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardListPurchaseEntryPage.jsp" />
+  	</definition> 
+	
+     <definition name="wview-purchaseEntryInvoiceDetailsPage" extends="wizard-base-definition">  
+		<put-attribute name="title" value="JioGST Bill Lite" />
+  		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardViewPurchaseEntryInvoiceDetailPage.jsp" />
+  	</definition> 
+  	
+	Wizard Purchase Entry EXCEPTION PAGE	
+	<definition name="wPurchaseEntryInvoice-exception" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardPurchaseEntryException.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!--wizard DASHBOARD PAGE -->	
+<!-- 	<definition name="wizardDashboard" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardDashboard.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	  <definition name="wizardDashboardInvoiceList" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardDashboardInvoiceList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	 <definition name="wizardDashboardCndnList" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardDashboardCndnList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="wizardDashboardViewInvoice" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardDashboardViewInvoice.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+<!-- 	<definition name="wizardDashboardViewCnDn" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardDashboardViewCnDn.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="wizardDashboardGenericEwaybillList" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardDashboardGenericEwaybillList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="wizardDashboardEwaybillThroughInvoiceList" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardDashboardEwaybillThroughInvoiceList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	 -->
+	
+<!-- 	<definition name="wizardDashboardGenericEwaybillList" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardDashboardGenericEwaybillList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- <definition name="wizardDashboardEwaybillThroughInvoiceView" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardDashboardEwaybillThroughInvoiceView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	  	
+	<!-- <definition name="wizardFeedbackHistory" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardFeedbackHistory.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	
+	
+	<definition name="wizardFeedbackHistoryDetails" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardFeedbackHistoryDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="wizardNotification" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/Notification.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!--  payload 
+	<definition name="viewL0PayloadData" extends="common-home">
+		<put-attribute name="title" value="L0 Payload data" />
+		<put-attribute name="body" value="/WEB-INF/views/private/viewL0PayloadData.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+  	
+  	
+  <!-- 	<definition name="wizardAspDraft" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardAspDraft.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- ADMIN DASHBOARD CODE -->
+	<definition name="admindashboard" extends="common-crud">
+		<put-attribute name="title" value="Admin Dashboard" />
+		<put-attribute name="body" value="/WEB-INF/views/admin/admindashboard.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+  	
+  	<!-- <definition name="wizarddraftlo" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizarddraftL0.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- <definition name="add-manageDashboardDetalis" extends="common-home">
+		<put-attribute name="title" value="Add Dashboard Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/dashboardDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+
+  	<!-- <definition name="prepareGstr3b" extends="common-home">
+  		<put-attribute name="title" value="JioGST Bill Lite"/>
+  		<put-attribute name="body" value="/WEB-INF/views/private/prepareGstr3B.jsp" />
+		<put-attribute name="current" value="" />
+  	</definition> -->
+  	
+	<!--<definition name="viewGSTNL0Payload" extends="common-home">
+		<put-attribute name="title" value="GSTN L0 Payload" />
+		<put-attribute name="body" value="/WEB-INF/views/private/viewGSTNL0Payload.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+		
+	<!-- <definition name="wizardsubmitl0" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardSubmitL0.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- <definition name="viewGSTNL0Payload" extends="common-home">
+		<put-attribute name="title" value="GSTN L0 Payload" />
+		<put-attribute name="body" value="/WEB-INF/views/private/viewGSTNL0Payload.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="viewFileToGstnPayload" extends="common-home">
+		<put-attribute name="title" value="File to GSTN Payload" />
+		<put-attribute name="body" value="/WEB-INF/views/private/viewFileToGstnPayload.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- <definition name="wizardfilel0" extends="wizard-base-definition">
+		<put-attribute name="title" value="JioGST Bill Lite" />
+		<put-attribute name="body" value="/WEB-INF/views/private/wizardJsp/wizardFilel0.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+  	<definition name="draftGstr3b" extends="common-home">
+  		<put-attribute name="title" value="JioGST Bill Lite"/>
+  		<put-attribute name="body" value="/WEB-INF/views/private/draftGstr3b.jsp" />
+		<put-attribute name="current" value="" />
+  	</definition>
+  	  	
+	<!-- Generate Purchase Entry Invoice Page -->
+	<!-- <definition name="add-generatePurchaseEntryInvoice" extends="common-invoice">
+		<put-attribute name="title" value="Generate Purchase Entry Invoice Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/addGeneratePurchaseEntryInvoice.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 
+	
+	<definition name="list-myPurchaseEntriesPage" extends="common-home">
+		<put-attribute name="title" value="Purchase Entry Invoice Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/listPurchaseEntriesPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="view-purchaseEntryInvoiceDetailsPage" extends="common-home">
+		<put-attribute name="title" value="Purchase Entry Invoice Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/viewPurchaseEntryInvoiceDetailsPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	<!-- INVOICE EXCEPTION PAGE 	
+	<definition name="purchaseEntryInvoice-exception" extends="common-invoice">
+		<put-attribute name="title" value="Invoice Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/PurchaseEntryException.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> -->
+	
+	
+	
+	
+  	<!-- New UI -->  	
+    <definition name="loginBase" template="/WEB-INF/layout/baseLogin.jsp">
+		<put-attribute name="title" value="Jio GST-Bill Lite" />
+    	<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+	</definition>
+	 	
+    <definition name="commonBase" template="/WEB-INF/layout/commonbase.jsp">
+		<put-attribute name="title" value="Jio GST-Bill Lite" />
+		<put-attribute name="header" value="/WEB-INF/layout/baseHeader.jsp" />
+    	<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/layout/baseFooter.jsp" />
+	</definition>
+	
+	<!-- common base for unification -->
+	<definition name="commonBaseUnification" template="/WEB-INF/layout/commonbase.jsp">
+		<put-attribute name="title" value="Jio GST-Bill Lite" />
+		<put-attribute name="header" value="/WEB-INF/layout/baseHeaderUnification.jsp" />
+    	<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/layout/baseFooter.jsp" />
+	</definition>
+	
+		<!-- common base for unification -->
+	<definition name="commonBaseUnificationForProfile" template="/WEB-INF/layout/commonbase.jsp">
+		<put-attribute name="title" value="Jio GST-Bill Lite" />
+    	<put-attribute name="analytics-header" value="/WEB-INF/layout/analyticsHeader.jsp" />
+    	<put-attribute name="header" value="" />
+    	<put-attribute name="analytics-body" value="/WEB-INF/layout/analyticsBody.jsp" />
+    	<put-attribute name="footer" value="/WEB-INF/layout/baseFooter.jsp" />
+	</definition>
+	
+	<!-- LOGIN PAGE -->
+	<definition name="login" extends="loginBase">
+		<put-attribute name="body" value="/WEB-INF/views/public/newUiPublicJsp/commonLogin.jsp" />
+		<put-attribute name="current" value="login" />
+	</definition>
+	
+	
+	<!-- LOGIN PAGE UNIFICATION-->
+	<definition name="loginunifi" extends="loginBase">
+		<put-attribute name="body" value="/WEB-INF/views/public/newUiPublicJsp/commonLoginUnifi.jsp" />
+		<put-attribute name="current" value="login" />
+	</definition>
+	
+	<!-- HOME PAGE UNIFICATION-->
+	<definition name="homeunification" extends="commonBaseUnification">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/home.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- HOME PAGE -->
+	<definition name="home" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/home.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+  	<!-- Generate Purchase Entry Invoice Page -->
+	<definition name="add-generatePurchaseEntryInvoice" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/purchaseEntryInvoiceGenerate.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="changePassword" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/changePassword.jsp" />
+		<put-attribute name="current" value="myProfile" />
+	</definition>
+		
+	<definition name="delete-userAccountPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/deleteAccount.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- LIST ADDITIONAL CHARGE PAGE -->
+	<definition name="list-addCharges" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/additionalChargeDetailsList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- EDIT ADDITIONAL CHARGE PAGE -->
+	<definition name="edit-addCharges" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/additionalChargeDetailsEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!--footer PAGE -->
+	<definition name="footer-page" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/footerPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Purchase Entry list-->
+	<definition name="list-myPurchaseEntriesPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/purchaseEntryPageList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	 
+	 <!-- Purchase Entry Invoice Detailed View-->
+	<definition name="view-purchaseEntryInvoiceDetailsPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/purchaseEntryInvoiceDetailsPageView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	
+
+	<!-- Generate Invoice List-->
+	<definition name="list-myInvoicesPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/invoicesPageList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 
+	
+	<!-- Invoice Detailed View -->
+	<definition name="view-invoiceDetailsPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/invoiceDetailsPageView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	
+	
+	<!-- REGISTRATION PAGE  -->	
+	<definition name="registration" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/registration.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- REGISTRATION PAGE UNIFICATION -->	
+	<definition name="registrationunifi" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/registrationunifi.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- My Profile edit-organizationMaster -->	
+	<definition name="edit-organizationMaster" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/organizationMasterEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Logo Upload Page   -->
+	<definition name="logoUploadPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/uploadOrgLogo.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- LIST SECONDARY USER PAGE -->
+	<definition name="list-secondaryUserPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/secondaryUsersList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	
+	
+	<!-- SECONDARY USER EDIT PAGE  -->
+	<definition name="edit-secondaryUserPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/secondaryUserEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- LIST MANAGE SERVICE CATALOUGE -->
+	 <definition name="list-manageMyServiceCatalogue" extends="commonBase">		
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/manageMyServiceCatalogueList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 	
+	
+	 <!-- EDIT SERVICE CATALOGUE PAGE -->
+	<definition name="edit-manageServiceCatalogue" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/manageMyServiceCatalogueEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 
+	
+		<!-- dashboardpage -->
+     <definition name="dashboardDetails" extends="commonBase">
+         <put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/dashboardDetailsNew.jsp" />
+         <put-attribute name="current" value="" />
+     </definition>
+	
+	<!-- LIST PRODUCTS PAGE -->
+	<definition name="list-productCatalogue" extends="commonBase">		
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/productsList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- EDIT PRODUCTS PAGE -->
+	<definition name="edit-Product" extends="commonBase">		
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/productsEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="dashboardListInvoicePage" extends="commonBase">
+         <put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/dashboardInvoicePageList.jsp" />
+         <put-attribute name="current" value="" />
+     </definition>
+	
+	<!-- Feedback details list page -->
+	 <definition name="showFeedbackDetailsList" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/feedbackDetailList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 
+	
+	<definition name="add-manageFeedbackDetails" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/feedbackDetailsAdd.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="feedbackDetailsView" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/feedbackDetailsView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- CONFIRM PASSWORD PAGE-->
+	<definition name="confirmPassword" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/confirmPassword.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+		<!-- Add OF MANAGE OFFERS PAGE -->
+	<definition name="add-gstinDetails" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/gstinDetailsAdd.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+		<!-- Edit OF MANAGE OFFERS PAGE -->
+	<definition name="edit-gstinDetails" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/gstinDetailsEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- LIST USER GTSIN MAPPING PAGE -->
+	<definition name="list-userGstinMapping" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/userGstinMappingList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- EDIT USER GTSIN MAPPING PAGE -->
+	<definition name="edit-userGstinMapping" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/userGstinMappingEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+		
+		<!-- MANAGE CUSTOMER DETAILS PAGE -->
+	<definition name="list-manageCustomerDetails" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/customerDetailsList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	
+	
+	<!--EDIT CUSTOMER DETAILS PAGE-->
+	<definition name="edit-ManageCustomerDetails" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/customerDetailsEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="dashboardListCNDNPage" extends="commonBase">        
+         <put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/dashboardCNDNPageList.jsp" />
+         <put-attribute name="current" value="" />
+     </definition>
+     
+      <definition name="dashboardListEwaybillPage" extends="commonBase">
+         <put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/dashboardEwaybillPageList.jsp" />
+         <put-attribute name="current" value="" />
+     </definition>
+     
+      <!-- List E-Way Bill Page -->
+	<definition name="list-eWayBills" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/genericEwayBillList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+     <!-- Nic User Authentication Page for Generic Eway bill -->
+	<definition name="add-loginGenericEwayBill" extends="commonBase">
+		<put-attribute name="title" value="Login Generic E-way Bill" />
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/genericEwayBillLogin.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>	
+	
+	<!-- Generate E-way Bill -->
+	<definition name="add-generateGenericEwayBill" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/genericEwayBillAdd.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+     <!-- Preview E-Way Bill Page -->
+     <definition name="previewGenericEwayBillPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/genericEWayBillPagePreview.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Logo Upload PAGE -->
+	<definition name="wMasterExcelUploadPage" extends="commonBase">	
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/uploadMasterExcel.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="pre-cn-dn-invoice-page" extends="commonBase">		
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/preCNDNPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- LIST ADDITIONAL CHARGE PAGE -->
+	<definition name="list-addCharges" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/additionalChargeDetailsList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- EDIT ADDITIONAL CHARGE PAGE -->
+	<definition name="edit-addCharges" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/additionalChargeDetailsEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>  
+		
+	<!-- Generate Invoice Page-->
+	<definition name="add-createInvoice" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/invoiceGenerate.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Pre CNDN page -->
+	<definition name="newUi_invoice_cn_dn_page" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/cnDnGenerate.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Wizard Logo Upload PAGE -->
+	<definition name="wMasterExcelUploadPage" extends="commonBase">	
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/uploadMasterExcel.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="pre-cn-dn-invoice-page" extends="commonBase">		
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/preCNDNPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- LIST ADDITIONAL CHARGE PAGE -->
+	<definition name="list-addCharges" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/additionalChargeDetailsList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- EDIT ADDITIONAL CHARGE PAGE -->
+	<definition name="edit-addCharges" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/additionalChargeDetailsEdit.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 	
+	
+	<!-- Cancel Generic E-Way Bill Page -->
+	<definition name="cancel-genEWayBillPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/genericEwayBillCancel.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Generate Invoice Page-->
+	<definition name="add-createInvoice" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/invoiceGenerate.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Pre CNDN page -->
+	<definition name="newUi_invoice_cn_dn_page" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/cnDnGenerate.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Cancel  E-Way Bill Through Invoice Page -->
+	<definition name="cancel-eWayBillPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/cancelEWayBillPage.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+		
+    <definition name="dashboardListInvoiceEwaybillPage" extends="commonBase">
+         <put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/dashboardInviceEwaybillPageList.jsp" />
+         <put-attribute name="current" value="" />
+     </definition>
+     
+     <!-- payload -->
+	<definition name="viewL0PayloadData" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/L0PayloadDataView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="viewGSTNL0Payload" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/gstnL0PayloadView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="viewFileToGstnPayload" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/fileToGstnPayloadView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Notifications -->
+	<definition name="show-notifications" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/notificationDetails.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+		
+	<definition name="upload-jioGst" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/UploadToAspNew.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- <definition name="viewCNDNDashboardPage" extends="commonBase">
+         <put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/cndnDashboardPageView.jsp" />
+         <put-attribute name="current" value="" />
+     </definition> -->
+     
+    <!--  Purchase Entry EXCEPTION PAGE -->	
+	<definition name="purchaseEntryInvoice-exception" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/PurchaseEntryException.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- EWay Bill Through invoice -->
+	<definition name="add-eWayBillPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/eWayBillPageAdd.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Preview E-Way Bill Page -->
+	<definition name="list-eWayBillPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/ewayBillList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- INVALID TOKEN ERROR PAGE -->	
+	<definition name="invalid-token-page" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/invalidTokenShow.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	 <definition name="viewInvoiceEwaybillDashboardPreviewPage" extends="commonBase">        
+         <put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/dashboardInvoiceEwayBillPagePreview.jsp" />
+         <put-attribute name="current" value="" />
+     </definition>
+          
+    <!-- Invoice EXCEPTION PAGE -->	
+	<definition name="invoice-exception" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/invoiceException.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	 <!-- Inventory Page -->
+	<definition name="openingStockPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/openingStockView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="increaseDecreaseInventory" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/increaseDecreaseInventorySave.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="stockSummaryReportPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/stockSummaryReportView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="unmovedItemsPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/unMovedItemsView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="negetivestocks" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/negativeStocks.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="balancecheckreport" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/balanceCheckReportView.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="stockStatusDetailedReportPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/stockStatusDetailedReport.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	
+	<definition name="movementbetweenstores" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/movementBetweenStores.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<!-- Revise and Return-->
+	<definition name="reviseAndReturn" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/reviseAndReturnGenerate.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 
+	
+	<definition name="showReviseAndReturnListPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/reviseAndReturnList.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	
+	<definition name="rr_party_change" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/reviseAndReturnPartyChange.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	
+	<definition name="rr_item_change" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/reviseAndReturnItemChange.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="rr_multiple_changes" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/reviseAndReturnMultipleChanges.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="stockDetailReportPage" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/stockStatusDetailedReport.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+	<definition name="prepareGstr3b" extends="commonBase">
+  		<put-attribute name="title" value="JioGST Bill Lite"/>
+  		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/prepareGstr3B.jsp" />
+		<put-attribute name="current" value="" />
+  	</definition>
+  	
+  	
+  	<definition name="invoiceSequenceSettings" extends="commonBase">
+		<put-attribute name="title" value="Invoice Sequence Page" />
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/invoiceSequenceSettings.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+     
+     	<!-- My Profile edit-organizationMaster -->	
+	<definition name="edit-unification-organizationMaster" extends="commonBaseUnification">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/organizationMasterEditUnification.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+		<!-- My Profile view-organizationMaster -->	
+	<definition name="view-unification-organizationMaster" extends="commonBaseUnificationForProfile">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/organizationMasterViewUnification.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+		<definition name="confirmPasswordLoginUnified" extends="commonBaseUnification">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/confirmPasswordLoginUnified.jsp" />
+		<put-attribute name="current" value="" />
+	</definition> 	
+     
+     	<definition name="increaseInventoryHistory" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/increaseInventoryHistory.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+	
+  	<definition name="decreaseInventoryHistory" extends="commonBase">
+		<put-attribute name="body" value="/WEB-INF/views/private/newUiPrivateJsp/decreaseInventoryHistory.jsp" />
+		<put-attribute name="current" value="" />
+	</definition>
+     
+</tiles-definitions>

@@ -1,0 +1,957 @@
+var finalSubmit = false;
+
+$(document).ready(function(){
+	
+	//bootbox.alert("You’re almost there!  <br>  Please help us with just a few more profile details. ");
+	
+var GstinNumRegex =  /^[0-9]{2}[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}[0-9A-Za-z]{3}$/; 
+var emailRegex = /^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+var gstinRegistered = false;
+var contactNumRegex = /[0-9]{2}\d{8}/;
+var aadharNumRegex = /[0-9]{2}\d{10}/;
+var contactLength = 10, AadharLength = 12;
+var blankMsg="";
+var lengthMsg = "";
+var regMsg = "";
+var termsConditionsStatus=false;
+
+/*
+ * var natureOfBusinessHidden = $("#natureOfBusinessHidden").val();
+var otherNatureOfBusinessHidden = $("#otherNatureOfBusinessHidden").val();
+
+loadNatureOfBusiness(natureOfBusinessHidden);
+manageNatureOfBusiness();
+
+if($("#pinCode").val() != ''){
+loadStateByPincode();
+}*/ 
+manageTermsConditions();
+
+$("#uploadLogo").click(function(e){
+	$('.loader').show();
+	finalSubmit = false;
+	$( "#CUpdateBtn" ).click();
+	e.preventDefault();	
+	/*if(finalSubmit){
+		callAjaxUserUpdate();
+		//window.location.href = 'getLogoPage';
+	}*/
+    $('.loader').fadeOut("slow"); 
+});
+
+/*$("#UpdateBtn").click(function(e){
+	$('.loader').show();
+    $('.loader').fadeOut("slow"); 
+	finalSubmit = false;
+	$( "#CUpdateBtn" ).click();
+	e.preventDefault();	
+	if(finalSubmit){
+		$("#updateUserMasterFormId").submit();
+	}else{
+		e.preventdefault();
+	}
+});*/
+
+$("#UpdateBtn").click(function(e){
+	 var errFlag = validateOrgName(); 
+	 var errFlag1 = validatePanNo();
+	 var errFlag3 = validateOrgType(); 
+	 var errFlag4 = validateDepartment(); 
+     var errFlag8 = validateEmailId();
+	 var errFlag6 = validateAddress();
+//	 var errFlag7 = validateState(); 
+	var errFlag9 = validateContactNo(); 
+	 var errFlag12 = validateUserId();
+	 //var errFlag14 = validateDefaultMailId();
+	// var errFlag15 = validateCIN();
+	 var errFlag20 = false;
+	var errFlagPin = validatePin(); 
+	var errFlagFirstname = validateFirstName(); 
+	var errFlagLastname = validateLastName(); 
+	 var otpValidated = false;
+	 finalSubmit = false;
+	 
+	 if ($("#orgType option:selected").text() == "Others"){
+	 errFlag20 = validateOtherOrg();
+	 }
+	 
+	 var errFlagNatureOfBusiness=false;
+	/* if($("#natureOfBusiness option:selected").text()=="OTHERS"){
+		 errFlagNatureOfBusiness =validateOtherNatureOfBusiness();
+	 }
+	 */
+	// var errFlag21 = validateCustomerAadharNo();
+	 $("#termsConditionsFlagHidden").val("Y");
+	 /*if($("#termsConditionsFlag").is(":checked")  || $("#termsConditionsFlagHidden").val()=="Y"){
+		 termsConditionsStatus=false;
+		 $("#divTermsConditions").show();
+		 $("#termsConditionsFlagHidden").val("Y")
+		$("#divTermsConditions").hide();
+	 }else{
+		 termsConditionsStatus=true;
+		 $("#termsConditionsFlag").val("N");
+		 bootbox.alert("Please Accept Terms & Conditions");
+	 }*/
+	 if ( (errFlag) || (errFlag1) ||  (errFlag3) ||  (errFlag4)  || (errFlag6)  ||  (errFlag8)  || (errFlag12)|| (errFlag20) || (errFlag21) ||(otpValidated) || (errFlagNatureOfBusiness) || (termsConditionsStatus) || (errFlagPin) || (errFlagFirstname) || (errFlagLastname)){
+		 e.preventDefault();	 
+	 }else{
+		 finalSubmit = true;
+	 }
+	 
+	 
+	 if((errFlag)){
+		 focusTextBox("org-name");
+	 } else if((errFlag1) ){
+		 focusTextBox("pan-number");
+	 } else if((errFlag3)){
+		 focusTextBox("orgType");
+	 } else if((errFlag4)){
+		 focusTextBox("department");
+	 } /*else if((errFlag5)){
+		 focusTextBox("address1");
+	 } else if((errFlag6)){				
+		 focusTextBox("pinCode");
+	 } else if((errFlag7)){ 				
+		 focusTextBox("state");
+	 } */else if((errFlag12)){
+		 focusTextBox("userId");
+	 } /*else if(errFlag14){
+		 focusTextBox("defaultEmailId");
+	 } else if(errFlag15){
+		 focusTextBox("cin");
+	 }*/ else /*if((errFlag9)){
+		 focusTextBox("contactNo");
+	 } else*/ if((errFlag20)){ 				
+		 focusTextBox("otherOrgType");
+	 } else if(errFlagNatureOfBusiness){
+		 focusTextBox("natureOfBusiness");
+	 }else if(errFlag21){
+		 focusTextBox("secUserAadhaarNo");
+	 }
+	  
+	 
+});
+
+function loadNatureOfBusiness(natureOfBusinessHidden){
+	
+	 $.ajax({
+			url : "getNatureOfBusinessList",
+			type : "POST",
+			dataType : "json",
+			headers: {_csrf_token : $("#_csrf_token").val()},
+			async : false,
+			success:function(json,fTextStatus,fRequest){
+				
+				if (isValidSession(json) == 'No') {
+					window.location.href = getDefaultSessionExpirePage();
+					return;
+				}
+
+				if(isValidToken(json) == 'No'){
+					window.location.href = getCsrfErrorPage();
+					return;
+				}
+				
+				$("#natureOfBusiness").append(
+				'<option value="">Select Nature of Business</option>');
+				$.each(json,function(i,value) {
+					if(value.natureOfBusiness==natureOfBusinessHidden){
+						$("#natureOfBusiness").append($('<option>').text(value.natureOfBusiness).attr('value',value.natureOfBusiness).attr('selected', 'selected'));
+						if(natureOfBusinessHidden=="OTHERS"){
+							
+							$("#otherNatureOfBusiness").val($("#otherNatureOfBusinessHidden").val());
+						}
+					}else{
+						$("#natureOfBusiness").append($('<option>').text(value.natureOfBusiness).attr('value',value.natureOfBusiness));
+					}
+				});
+				setCsrfToken(fRequest.getResponseHeader('_csrf_token'));
+	         },
+	         error: function (data,status,er) {
+	        	 
+	        	 getInternalServerErrorPage();   
+	        }
+		}); 
+	
+}
+
+function validateOtherNatureOfBusiness(){
+	errFlagNatureOfBusiness = validateTextField("otherNatureOfBusiness","otherNatureOfBusiness-req",blankMsg);
+ 	
+ 	
+ 	 return errFlagNatureOfBusiness;
+ 	}
+function validateFirstName(){
+	errFlagFirstname = validateTextField("firstName","org-name-req",blankMsg);
+	 if(!errFlagFirstname){
+		 errFlagFirstname=validateFieldLength("first-name","org-name-req",lengthMsg,1);
+	 }
+	 return errFlagFirstname;
+}
+function validateLastName(){
+	errFlagLastname = validateTextField("lastName","org-name-req",blankMsg);
+	 if(!errFlagLastname){
+		 errFlagLastname=validateFieldLength("last-name","org-name-req",lengthMsg,1);
+	 }
+	 return errFlagLastname;
+}
+
+function validateOrgName(){
+	errFlag = validateTextField("org-name","org-name-req",blankMsg);
+	 if(!errFlag){
+		 errFlag=validateFieldLength("org-name","org-name-req",lengthMsg,1);
+	 }
+	 return errFlag;
+}
+
+function validatePanNo(){
+	errFlag1 = validateTextField("pan-number","pan-number-req",blankMsg);
+	 if(!errFlag1){
+		 errFlag1=validateFieldLength("pan-number","pan-number-req",lengthMsg,10);
+	 }
+	 return errFlag1;
+}
+
+
+function validateAddress(){
+	errFlag6 = validateTextField("address1","pan-number-req",blankMsg);
+	 if(!errFlag6){
+		 errFlag6=validateFieldLength("address1","pan-number-req",lengthMsg,10);
+	 }
+	 return errFlag6;
+}
+
+
+function validateOrgType(){
+	errFlag3 = validateTextField("orgType","org-type-id",blankMsg);
+	 if(!errFlag3){
+		 errFlag3=validateSelectField("orgType","org-type-id");
+	 }
+	 return errFlag3;
+}
+
+function validateDepartment(){
+	errFlag4 = validateTextField("department","billing-for-req",blankMsg);
+	 if(!errFlag4){
+		 errFlag4=validateSelectField("department","billing-for-req");
+	 }
+	 return errFlag4;
+}
+
+function validateAddress(){
+	errFlag5 = validateTextField("address1","address1-req",blankMsg);
+	 if(!errFlag5){
+		 errFlag5=validateFieldLength("address1","address1-req",lengthMsg,2);
+	 }
+	 return errFlag5;
+}
+
+function validatePinCode(){
+	errFlag6 = validateTextField("pinCode","zip-req",blankMsg);
+	 if(!errFlag6){
+		 errFlag6=validateFieldLength("pinCode","zip-req",lengthMsg,6);
+	 }
+	 return errFlag6;
+}
+
+function validateState(){
+	errFlag7 = validateTextField("state","state-req",blankMsg);
+	 if(!errFlag7){
+		 errFlag7=validateFieldLength("state","state-req",lengthMsg,1);
+	 }
+	 return errFlag7;
+}
+
+function validateEmailId(){
+	errFlag8 = validateTextField("UseremailId","reg-email-req",blankMsg);
+	 if(!errFlag8){
+		 errFlag8=validateRegexpressions("UseremailId","reg-email-req",regMsg,emailRegex);
+	 }
+	 return errFlag8;
+}
+
+function validateContactNo(){
+	errFlag9 = validateTextField("usercontactNo","contactNo-req",blankMsg);
+	 if(!errFlag9){
+		 errFlag9=validateRegexpressions("usercontactNo","contactNo-req",regMsg,contactNumRegex);
+	 }
+	 if($("#usercontactNo").val().length <10){
+		 errFlag = true ;
+	 }
+	 return errFlag;
+}
+
+function validateGstinNo(){
+	errFlag10 = validateTextField("reg-gstin","reg-gstin-req",blankMsg);
+	 if(!errFlag10){
+		 errFlag10=validateRegexpressions("reg-gstin","reg-gstin-req",regMsg,GstinNumRegex);
+	 }
+	 return errFlag10;
+}
+
+function valiateGstinState(){
+	errFlag11 = validateTextField("reg-gstin-state","reg-gstin-state-reg",blankMsg);
+	 if(!errFlag11){
+		 errFlag11=validateSelectField("reg-gstin-state","reg-gstin-state-reg");
+	 }
+	 return errFlag11;
+}
+
+function validateUserId(){
+	errFlag12 = validateTextField("userId","userId-req",blankMsg);
+	 if(!errFlag12){
+		 errFlag12=validateFieldLength("userId","userId-req",lengthMsg,2);
+	 }
+	 return errFlag12;
+}
+
+
+
+function validatePin(){
+	errFlagPin = validateTextField("pin","cust-pin-format",blankMsg);
+	 if(!errFlagPin){
+		 errFlagPin=validateFieldLength("pin","cust-pin-format",lengthMsg,2);
+	 }
+	 return errFlagPin;
+}
+
+function validateAuthName(){
+	errFlag13 = validateTextField("userName","ser-userName",blankMsg);
+	 if(!errFlag13){
+		 errFlag13=validateFieldLength("userName","ser-userName",lengthMsg,2);
+	 }
+	 return errFlag13;
+}
+
+function validateDefaultMailId(){
+	errFlag14 = validateTextField("defaultEmailId","cust-email-format",blankMsg);
+	 if(!errFlag14){
+		 errFlag14=validateRegexpressions("defaultEmailId","cust-email-format", regMsg, emailRegex);
+	 }
+	 return errFlag14;
+}
+
+function validateCIN(){
+	 if ($("#cin").val().length > 0){
+	 errFlag15=validateFieldLength("cin","cust-cin-format",lengthMsg,21);
+	 } else {
+		 errFlag15 = false;
+	 }
+return errFlag15;
+
+}
+
+function validateOtherOrg(){
+	errFlag20 = validateTextField("otherOrgType","otherOrgType-req",blankMsg);
+	 if(!errFlag20){
+		 errFlag20=validateFieldLength("otherOrgType","otherOrgType-req",lengthMsg,1);
+	 }
+	 return errFlag20;
+}
+
+
+function validateCustomerAadharNo(){
+	 
+		 errFlag21=validateFieldLength("secUserAadhaarNo","aadharNo-req",lengthMsg,AadharLength);
+		 if(!errFlag21){
+			 errFlag21=validateRegexpressions("secUserAadhaarNo","aadharNo-req",regMsg,aadharNumRegex);
+		 }
+	 return errFlag21;
+
+}
+
+$("#orgType").change(function(){
+	if ($("#orgType").val() === ""){
+		$("#orgType").addClass("input-error").removeClass("input-correct");
+		$("#org-type-id").show();
+	}
+	if ($("#orgType").val() !== ""){
+		$("#orgType").addClass("input-correct").removeClass("input-error");
+		$("#org-type-id").hide();
+	}
+});
+
+$("#otherOrgType").on("keyup input", function(){
+	 this.value = this.value.replace(/[\\[]*$/, '');
+	this.value = this.value.replace(/[^[a-zA-Z-\s]*$/, '');
+	if ($("#otherOrgType").val() !== ""){
+		$("#otherOrgType").addClass("input-correct").removeClass("input-error");
+		$("#otherOrgType-req").hide();
+	}
+	if ($("#otherOrgType").val() === ""){
+		$("#otherOrgType").addClass("input-error").removeClass("input-correct");
+		$("#otherOrgType-req").show();
+	}
+});
+
+$("#otherNatureOfBusiness").on("keyup input", function(){
+	 this.value = this.value.replace(/[\\[]*$/, '');
+	this.value = this.value.replace(/[^[a-zA-Z-\s]*$/, '');
+	if ($("#otherNatureOfBusiness").val() !== ""){
+		$("#otherNatureOfBusiness").addClass("input-correct").removeClass("input-error");
+		$("#otherNatureOfBusiness-req").hide();
+	}
+	if ($("#otherNatureOfBusiness").val() === ""){
+		$("#otherNatureOfBusiness").addClass("input-error").removeClass("input-correct");
+		$("#otherNatureOfBusiness-req").show();
+	}
+});
+
+$("#regdOfficeDetails").on("keyup input", function(){
+	 this.value = this.value.replace(/[^[a-zA-Z0-9-\s,]*$/, '');
+});
+
+$("#cin").on("keyup input", function(){
+	this.value = this.value.replace(/[^[a-zA-Z0-9-]*$/, '');
+	 if ($("#cin").val().length >= 21){
+		 $("#cin").addClass("input-correct").removeClass("input-error");
+		 $("#cust-cin-format").hide();		 
+	 }
+	 if ($("#cin").val().length < 21){
+		 $("#cin").addClass("input-error").removeClass("input-correct");
+		 $("#cust-cin-format").show();	
+		 $("#cin").focus();
+	 }
+});
+
+$("#principalPlaceOfBusiness").on("keyup input", function(){
+	 this.value = this.value.replace(/[^[a-zA-Z0-9-\s,]*$/, '');
+});
+
+
+/*$("#billing-for").change(function(){
+	if ($("#billing-for").val() !== ""){
+		$("#billing-for").addClass("input-correct").removeClass("input-error");
+		$("#billing-for-req").hide();
+	}
+	if ($("#billing-for").val() === ""){
+		$("#billing-for").addClass("input-error").removeClass("input-correct");
+		$("#billing-for-req").show();
+	}
+});*/
+
+$("#natureOfBusiness").on("keyup click", function(){
+	
+});
+
+function manageOrgType(){
+	if ($("#orgType option:selected").text() === "Others"){
+		$("#divOtherOrgType").show();
+	}else{
+		$("#divOtherOrgType").hide();
+		$("#otherOrgType").val("");
+	}
+	if ($("#orgType").val() === "" || $("#orgType").val() == "0"){
+		$("#orgType").addClass("input-error").removeClass("input-correct");
+		$("#org-type-id").show();
+	}
+	if ($("#orgType").val() !== ""){
+		$("#orgType").addClass("input-correct").removeClass("input-error");
+		$("#org-type-id").hide();
+	}
+}
+
+$("#orgType").change(function(){
+	manageOrgType();
+	
+});
+
+$("#natureOfBusiness").change(function(){
+	if ($("#natureOfBusiness").val() == "OTHERS"){
+		$("#divOtherNatureOfBusiness").show();
+	}else{
+		$("#divOtherNatureOfBusiness").hide();
+		$("#divOtherNatureOfBusiness").val("");
+	}
+});
+
+function manageNatureOfBusiness(){
+	if ($("#natureOfBusiness").val() === "OTHERS"){
+		$("#divOtherNatureOfBusiness").show();
+	}else{
+		$("#divOtherNatureOfBusiness").hide();
+		$("#divOtherNatureOfBusiness").val("");
+	}
+}
+
+function manageTermsConditions(){
+	if($("#termsConditionsFlagHidden").val()=="Y"){
+		 $("#termsConditionsFlagHidden").val("Y")
+		$("#divTermsConditions").hide();
+	}else{
+		//$("#termsAndConditionsId").show();
+		//$("#editPageContainer").hide();
+		//$("#backToMyProfile").hide();
+	}
+	
+}
+
+$("#org-name").on("keyup input",function(e){
+	if(e.keyCode == 32){
+		   this.value = removeWhiteSpace(this.value);
+	   }
+	 this.value = this.value.replace(/[[]*$/, '');
+	   this.value = this.value.replace(/[^[\\a-zA-Z0-9\s- &/.@'()!]*$/, '');
+	//   this.value = this.value.replace(/[^[a-zA-Z0-9\s]*$/, '');
+	 if ($("#org-name").val().length > 1){
+		 $("#org-name").addClass("input-correct").removeClass("input-error");
+		 $("#org-name-req").hide();		 
+	 }
+	 if ($("#org-name").val().length < 1){
+		 $("#org-name").addClass("input-error").removeClass("input-correct");
+		 $("#org-name-req").show();	
+		 $("#org-name").focus();
+	 }
+});
+
+
+$("#address1").on("keyup input",function(){
+	this.value = this.value.replace(/[\\[]*$/, '');
+	 this.value = this.value.replace(/[^[a-zA-Z0-9-\s,]*$/, '');
+	 if ($("#address1").val() !== ""){
+		 $("#address1").addClass("input-correct").removeClass("input-error");
+		 $("#address1-req").hide();		 
+	 }
+	 if ($("#address1").val() === ""){
+		 $("#address1").addClass("input-error").removeClass("input-correct");
+		 $("#address1-req").show();
+		 $("#address1").focus();
+	 }
+});
+
+
+
+$("#state").on("keyup input",function(){
+	 if ($("#state").val() !== ""){
+		 $("#state").addClass("input-correct").removeClass("input-error");
+		 $("#state-req").hide();		 
+	 }
+	 if ($("#state").val() === ""){
+		 $("#state").addClass("input-error").removeClass("input-correct");
+		 $("#state-req").show();
+		 $("#state").focus();
+	 }
+});
+
+
+$("#userId").on("keyup input",function(e){
+	if(e.keyCode == 32){
+		   this.value = removeWhiteSpace(this.value);
+	   }
+	 if ($("#userId").val().length > 1){
+		 $("#userId").addClass("input-error").removeClass("input-correct");
+		 $("#userId-req").show();
+		 $("#userId").focus();
+	 }
+	 if ($("#userId").val().length > 1){
+		 $("#userId").addClass("input-correct").removeClass("input-error");
+		 $("#userId-req").hide();		 
+	 }
+
+	 if ($("#userId").val().length < 1){
+		 $("#userId").addClass("input-error").removeClass("input-correct");
+		 $("#userId-req").show();		 
+	 }
+});
+
+
+$("#pan-number").on("keyup input",function(e){
+	if(e.keyCode == 32){
+		   this.value = removeWhiteSpace(this.value);
+	   }
+	var PanRegex = /[a-zA-z]{5}\d{4}[a-zA-Z]{1}/;
+	if ( (PanRegex.test(this.value) === true) ){
+		 $("#pan-number").addClass("input-correct").removeClass("input-error");
+		 $("#pan-number-req").hide();	
+	}
+	if ( !(PanRegex.test(this.value) === true) ){
+		 $("#pan-number").addClass("input-error").removeClass("input-correct");
+		 $("#pan-number-req").show();
+		 $("#pan-number").focus();
+	}
+	if ($("#pan-number").val().length !== 10){
+		 $("#pan-number").addClass("input-error").removeClass("input-correct");
+		 $("#pan-number-req").show();
+		 $("#pan-number").focus();
+	}
+});
+
+ 
+ $("#contactNo").on("keyup input",function(){
+	 this.value = this.value.replace(/^0/, '');
+		var contactNumRegex = /[0-9]{2}\d{8}/;
+		if(contactNumRegex.test(this.value) !== true){
+			this.value = this.value.replace(/[^0-9]+/, '');
+			 $("#contactNo").addClass("input-error").removeClass("input-correct");
+			 $("#contactNo-req").show();
+			 $("#contactNo").focus();
+		}
+		if (contactNumRegex.test(this.value) === true){
+			 $("#contactNo").addClass("input-correct").removeClass("input-error");
+			 $("#contactNo-req").hide();
+		}
+	});
+ 
+ 
+ 
+ 
+ $("#userName").on("keyup input",function(){
+		//this.value = removeWhiteSpace(this.value);
+		this.value = this.value.replace(/[^[a-zA-Z-, ]*$/, '');
+		 if ($("#userName").val() === ""){
+			 $("#userName").addClass("input-error").removeClass("input-correct");
+			 $("#ser-userName").show();
+			 
+		 }
+		 if ($("#userName").val() !== ""){
+			 $("#userName").addClass("input-correct").removeClass("input-error");
+			 $("#ser-userName").hide();
+			 
+		 } 
+	});
+
+ 
+
+ 
+	$("#UseremailId").on("keyup input", function(e){
+		if(e.keyCode == 32){
+			   this.value = removeWhiteSpace(this.value);
+		   }
+		var emailRegex = /^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+		if(!emailRegex.test($("#UseremailId").val())){
+			$("#reg-email-req").show();
+			$("#UseremailId").addClass("input-error").removeClass("input-correct");
+			$("#UseremailId").focus();
+		}
+		else{
+			$("#reg-email-req").hide();
+			$("#UseremailId").addClass("input-correct").removeClass("input-error");
+		}
+		
+		if ($("#UseremailId").val() == ""){
+			$("#reg-email-req").hide();
+			$("#UseremailId").addClass("input-correct").removeClass("input-error");
+		 }
+		
+	});
+	
+	$("#defaultEmailId").on("keyup input", function(e){
+		if(e.keyCode == 32){
+			   this.value = removeWhiteSpace(this.value);
+		   }
+		var emailRegex = /^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+		if ($("#defaultEmailId").val() == ""){
+			 $("#cust-email-format").text('This field is required');
+			 $("#cust-email-format").show();
+				//$("#defaultEmailId").addClass("input-error").removeClass("input-correct");
+		 } else {
+		if(!emailRegex.test($("#defaultEmailId").val())){
+			$("#cust-email-format").show();
+			$("#cust-email-format").text('This field should be in a correct format');
+			//$("#defaultEmailId").addClass("input-error").removeClass("input-correct");
+			//$("#defaultEmailId").focus();
+		}
+		else{
+			$("#cust-email-format").hide();
+			$("#defaultEmailId").addClass("input-correct").removeClass("input-error");
+		}
+		 }
+		 
+	});
+	
+	
+	/*
+ 	 $("#reg-gstin").on("keyup input",function(){
+ 		//this.value = removeWhiteSpace(this.value);
+ 		this.value = this.value.replace(/[^[a-zA-Z0-9]*$/, '');
+			if(GstinNumRegex.test(this.value) === true){				
+				 $("#reg-gstin").addClass("input-correct").removeClass("input-error");
+				 $("#reg-gstin-req").hide();
+			}
+			if(GstinNumRegex.test(this.value) !== true){
+				 $("#reg-gstin").addClass("input-error").removeClass("input-correct");
+				 $("#reg-gstin-req").show();
+				 $("#reg-gstin").focus();
+			}
+			if((this.value) === ''){
+				$("#reg-gstin-state").empty(); 
+			}
+	});
+ 	 
+ 	 
+ 	$("#reg-gstin").blur(function(){
+	    var gstin = $("#reg-gstin").val();
+	    if(gstin != ''){
+	    if(validateGSTINWithRegex(gstin)){
+	    $.ajax({
+			url : "checkIfGstinIsRegistered",
+			type : "POST",
+			//method : "GET",
+			//contentType : "application/json",
+			dataType : "json",
+			data : {gstin : gstin},
+			async : false,
+			success : function(jsonVal) {
+				if(jsonVal == true){
+					 $("#reg-gstin").addClass("input-error").removeClass("input-correct");
+					 $("#reg-gstin-back-req").text('GSTIN  - '+gstin+' already Registered. Try some other GSTIN.');
+					 $("#reg-gstin-back-req").show();
+					 gstinRegistered = true;
+				}else{
+					 $("#reg-gstin").addClass("input-correct").removeClass("input-error");
+					 $("#reg-gstin-req").hide();
+					 $("#reg-gstin-back-req").hide();
+					 gstinRegistered = false;
+				}
+			}
+        });
+	    if(gstinRegistered!=true){
+	    	//getStateByGstinNumber(gstin);
+	    }
+	    
+	}
+	    }
+	    
+	});
+ 	
+ 	
+ 	function validateGSTINWithRegex(gstin){
+		if(GstinNumRegex.test(gstin) === true){				
+			 $("#reg-gstin").addClass("input-correct").removeClass("input-error");
+			 $("#reg-gstin-req").hide();
+			 $("#reg-gstin-back-req").hide();
+			 return true;
+		}
+		if(GstinNumRegex.test(gstin) !== true){
+			 $("#reg-gstin").addClass("input-error").removeClass("input-correct");
+			 $("#reg-gstin-req").show();
+		//	 $("#reg-gstin").focus();
+			 $("#reg-gstin-back-req").hide();
+			 return false;
+		}
+		
+	}
+*/
+
+$("#pinCode").on("keyup input", function(){
+	var contactNumRegex = /[0-9]{2}\d{8}/;
+	if(contactNumRegex.test(this.value) !== true){
+		this.value = this.value.replace(/[^0-9]+/, '');
+		 $("#pinCode").addClass("input-error").removeClass("input-correct");
+		 $("#zip-req").show();
+		 $("#pinCode").focus();
+	}
+	if ($("#pinCode").val().length === 6){
+		 $("#pinCode").addClass("input-correct").removeClass("input-error");
+		 $("#zip-req").hide();
+		 loadStateByPincode();
+	}
+});
+
+
+$("#secUserAadhaarNo").on("keyup, input",function(){
+	
+	if($("#secUserAadhaarNo").val()!="" && aadharNumRegex.test($("#secUserAadhaarNo").val()) !== true){
+		$("#aadharNo-req").show();			
+		$("#secUserAadhaarNo").addClass("input-error").removeClass("input-correct");	
+	}
+	if(aadharNumRegex.test($("#secUserAadhaarNo").val()) === true){
+		$("#aadharNo-req").hide();
+		$("#secUserAadhaarNo").addClass("input-correct").removeClass("input-error");
+	}
+	if(aadharNumRegex.test($("#aadharNum").val()) !== true){
+		this.value = this.value.replace(/[^0-9]+/, '');
+	}
+	if ((($("#secUserAadhaarNo").val().length < 12) && ($("#secUserAadhaarNo").val().length > 0))){
+		$("#aadharNo-req").show();
+		$("#secUserAadhaarNo").addClass("input-error").removeClass("input-correct");
+	} else if($("#secUserAadhaarNo").val().length == 12){
+		$("#aadharNo-req").hide();
+		$("#secUserAadhaarNo").addClass("input-correct").removeClass("input-error");
+	}
+	
+	if($("#secUserAadhaarNo").val()==""){
+		$("#aadharNo-req").hide();
+		$("#secUserAadhaarNo").addClass("input-correct").removeClass("input-error");
+	}
+});
+
+
+
+$("#termsConditionsFlag").change(function() {
+    if(this.checked) {
+    	$("#termsConditionsFlag").val("Y");
+    	termsConditionsStatus=false;
+    }else{
+    	termsConditionsStatus=false;
+    }
+});
+
+
+$("#iAgree").click(function () {
+	$("#termsConditionsFlagHidden").val("Y");
+	//var resp = $("#CUpdateBtn").click();
+	//alert("finalSubmit : "+finalSubmit);
+	/*if(finalSubmit == false){
+		 bootbox.alert("Profile is incomplete. Kindly fill up the mandatory fields and then Accept Terms and Conditions.");
+		$("#divTermsConditions").show();
+		$("#termsAndConditionsId").hide();
+		$("#editPageContainer").show();
+	}else{
+		$.ajax({
+			url : "updateTermsConditions",
+			type : "POST",
+			dataType : "json",
+			headers: {_csrf_token : $("#_csrf_token").val()},
+			async : false,
+			success : function(jsonVal,fTextStatus,fRequest) {
+				
+				if (isValidSession(jsonVal) == 'No') {
+					window.location.href = getDefaultSessionExpirePage();
+					return;
+				}
+
+				if(isValidToken(jsonVal) == 'No'){
+					window.location.href = getCsrfErrorPage();
+					return;
+				}
+				setCsrfToken(fRequest.getResponseHeader('_csrf_token'));
+				if(jsonVal == true){
+					 $("#termsConditionsFlagHidden").val("Y")
+						$("#divTermsConditions").hide();
+						$("#termsAndConditionsId").hide();
+						$("#editPageContainer").show();
+				}
+				
+			},
+			error: function (data,status,er) {
+				 
+				 getInternalServerErrorPage();   
+			}
+			
+	    });
+	}*/
+	
+    
+	
+});
+
+});
+
+
+$(document).ready(function(){
+	/*
+	 $.ajax({
+			url : "getOrganizationTypeList",
+			method : "get",
+		//	contentType : "application/json",
+			dataType : "json",
+			async : false,
+			success:function(json,fTextStatus,fRequest){
+				$("#org-type").append(
+				'<option value="0">Select </option>');
+				$.each(json,function(i,value) {
+					$("#org-type").append($('<option>').text(value.orgType).attr('value',value.id));
+				});
+				setCsrfToken(fRequest.getResponseHeader('_csrf_token'));	
+	         }
+		}); 
+*/
+	 
+	$("#termsConditions").click(function(e){
+		e.preventDefault();	
+		$("#termsAndConditionsId").show();
+		$("#termsConditions").hide();
+		$("#UpdateBtn").hide();
+		
+		$("#editPageContainer").hide();
+		$('html, body').animate({ scrollTop: 0 }, 'fast');
+	});
+	
+	/*$("#backToMyProfile").click(function(e){
+		e.preventDefault();	
+		$("#termsAndConditionsId").hide();
+		$("#editPageContainer").show();
+	});*/
+	
+	
+});
+
+function callAjaxUserUpdate(){
+	$.ajax({
+		  method:"POST",
+		  url:"updateUserAjax",
+		  dataType : "json",
+		  async : false,
+		  headers: {_csrf_token : $("#_csrf_token").val()},
+		  data : $("#updateUserMasterFormId").serialize(), 
+		  success:function(json,fTextStatus,fRequest) {
+			  if (isValidSession(json) == 'No') {
+					window.location.href = getDefaultSessionExpirePage();
+					return;
+				}
+
+				if(isValidToken(json) == 'No'){
+					window.location.href = getCsrfErrorPage();
+					return;
+				}
+			  
+			if(json.response == 'FAILURE'){
+				bootbox.alert(json.message);
+			}else{
+				//alert(json.message);
+				window.location.href = "getLogoPage";
+			}
+			 setCsrfToken(fRequest.getResponseHeader('_csrf_token'));
+		  },
+		  error: function (data,status,er) {
+				 
+				 getInternalServerErrorPage();   
+			}
+
+		 
+	});
+}
+
+
+$(document).on('keyup',"#landlineNo", function(){
+	this.value = this.value.replace(/[^0-9.]+/, '');
+	if (currencyRegex.test($(this).val()) !== true){
+		$(this).addClass("input-error");
+	}else{
+		$(this).removeClass("input-error");
+	}	
+});
+
+$(document).on('keyup',"#userLandlineNo", function(){
+	this.value = this.value.replace(/[^0-9.]+/, '');
+	if (currencyRegex.test($(this).val()) !== true){
+		$(this).addClass("input-error");
+	}else{
+		$(this).removeClass("input-error");
+	}	
+});
+
+$(document).on('keyup',"#pin", function(){
+	this.value = this.value.replace(/[^0-9.]+/, '');
+	if (currencyRegex.test($(this).val()) !== true){
+		$(this).addClass("input-error");
+	}else{
+		$(this).removeClass("input-error");
+	}	
+});
+
+$(document).on('keyup',"#usercontactNo", function(){
+	 this.value = this.value.replace(/^0/, '');
+		var contactNumRegex = /[0-9]{2}\d{8}/;
+		if(contactNumRegex.test(this.value) !== true){
+			this.value = this.value.replace(/[^0-9]+/, '');
+			 $("#usercontactNo").addClass("input-error").removeClass("input-correct");
+	
+		}
+		if (contactNumRegex.test(this.value) === true){
+			 $("#usercontactNo").addClass("input-correct").removeClass("input-error");
+	
+		}	
+});
+

@@ -1,0 +1,139 @@
+
+/* Medium Desktops and Down */
+@media screen and (max-width: 992px) {
+.login-right {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.form-wrap {
+    margin: 0;
+}
+.form-wrap label {
+    margin-top: 20px;
+}
+.dis-none {
+  display: none !important;
+}
+.form-section-title {
+    display: block;
+}
+.inside-thumbbg {
+    padding: 20px 0;
+}
+.diff {
+    border-bottom: 1px solid #d8d8d8;
+    padding-bottom: 15px;
+}
+}
+
+/* Tablets and Down */
+@media screen and (max-width : 767px) {
+	.box2{margin: 0px 10px 10px 0px}
+	.dataTables_length{display:none;}
+	.dataTables_filter{margin-bottom:10px;}
+	.form-wrap .row {
+	  	padding: 12px 10px;
+	    margin-top: 0px;
+	}
+
+.login-logo {
+	text-align: center;
+}
+.login-wrap {
+	height: 660px;
+}
+.login-logo img {
+    float: none;    
+    margin-top: 8px;
+}
+.login-left {
+    height: 660px;
+    position: relative;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+.white-big-title {
+    display: none;
+}
+.login-right {
+	width: 90%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	padding: 20px 30px;
+	min-height: auto;
+	position: absolute;
+	bottom: 70px;
+	background-repeat: repeat;
+}
+.login-right ul {
+    margin: 40px 0;
+}
+.login-footer {
+    text-align: center;
+    left: 0;
+    right: 0;
+}
+.checkbox-inline, .radio-inline {
+    display: block;
+}
+.checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline {
+    margin-left: 0;
+}
+.app-box {
+    margin-bottom: 15px;
+}
+.dropdown-menu {
+    right: 0;
+    left: auto;
+}
+.mb {
+    margin-bottom: 0px; 
+}
+
+	.submenu-title {
+	    text-align: center;
+	}
+	
+	.removerow {top: 5px;}
+	
+	.form-section-title-pad15 {
+		margin: 0 20px 0 0;
+	}
+	
+	.table-responsive>.cndnTable.table>thead>tr>th {
+	    white-space: pre-wrap;
+	    padding:  10px;
+	}
+}
+
+/* All Mobiles */
+@media screen and (max-width : 568px) {
+	.blue-but{
+	    /* width: 100%; */
+	    margin-bottom: 10px;
+	}
+	.form-wrap label {
+	    margin-top: 5px;
+	}
+	#back-top {
+    	bottom: 120px;
+	}
+	.removerow {top: 5px;}
+	
+	.choosefile {
+	 width: 50%;
+	}
+	
+	.buttonsize{
+    width: 44px;
+    height: 44px;
+}
+}
+
+@media screen and (max-width: 992px){
+ 	.ruGST .col-md-6{
+	 height: auto;
+	 }
+}

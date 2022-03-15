@@ -1,0 +1,68 @@
+body{background:rgba(216,240,252,1)}
+.login-details{border:1px solid #f2f2f2; background:#fff; margin:30px auto; max-width: 480px; padding:15px;     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 4px;}
+.form-group .label{font-weight: normal;}
+.form-group .label{margin:0px; padding:0px;}
+.login-details .signup {padding:10px; text-align:center; border-top: 1px solid #f2f2f2; margin:10px 0px;}
+.btn-primary {
+    color: #fff;
+    background-color: #50bdaa;
+    border-color: #50bdaa;
+}
+.btn{border-radius:24px; padding:8px 20px}
+.bg_shadow {padding:15px; border:1px solid #f2f2f2; background:#fff; box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);}
+.label-text{text-align:left; color:#000; font-szie: 16px;}
+.label{font-weight:normal}
+
+#pan-number-req, #contactNo-req, #password-req, #password-format,  #conf-password-req,  #conf-password-format, #otp-req /*,  #,  #, */  
+{
+	display:none;
+}
+
+.insidehead {
+    position: relative;
+    z-index: 999;
+}
+header {
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    background: #fff;
+    -webkit-box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.075);
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.075);
+    color: #2f65b0;
+    margin-bottom: 15px;
+}
+.insidehead span {
+    color: #2f65b0;
+    font-size: 16px;
+    position: relative;
+    top: -5px;
+    left: 8px;
+}
+
+.cust-error {
+    /*position:relative;
+    font-size:14px;
+    bottom:-5px;
+    left:18px;
+    color:red;*/
+    position: relative;
+    font-size: 11px;
+    /*bottom: -18px;
+    left: 6px;*/
+    color: red;
+}
+.mandatory .label-text:after {
+    content: '*';
+    color: red;
+}
+
+.input-error {
+    border: 2px solid red !important;
+}
+
+.input-correct {
+    border: 2px solid green !important;
+}

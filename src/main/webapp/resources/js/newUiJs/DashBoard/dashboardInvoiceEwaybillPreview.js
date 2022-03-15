@@ -1,0 +1,432 @@
+var backendResponse="";
+
+$(document).ready(function() {
+	$('#headerPreview').hide();
+	createDataTable('invoiceHistoryTabInvoiceEway');
+	$('.loader').fadeOut("slow");
+} );
+
+/*function getPreviewOfInvoiceEwayBillDetails(id,ewaybillNo){
+	$('.loader').show();
+       document.invoiceEwaybill.action = "./getInvoiceEwayPreviewDetails";
+       document.invoiceEwaybill.invoiceId.value = id;
+       document.invoiceEwaybill.ewaybillNo.value = ewaybillNo;
+       document.invoiceEwaybill._csrf_token.value = $("#_csrf_token").val();
+       document.invoiceEwaybill.submit();
+       $('.loader').fadeOut("slow");
+}
+*/
+$(document).ready(function() {
+	var idValue=$("#ewaybillid").val();
+	getEwayBillDetailsInPreview(idValue);
+	$('.loader').show();
+	$('#card').hide();
+	$("#firstDivId").hide();
+	
+	setValuesInHiddenFields(idValue);
+	setTimeout(function(){
+		
+		$("#secondDivId").show();
+		$("#headerPreview").show();
+		$(".viewHeading").hide();
+		$("#previewButtons").show();
+		$('#card').show();
+		$(".loader").fadeOut("slow"); 
+	}, 2000);
+	
+
+});
+
+$("#goBackToInvoiceEwaybill").click(function(){
+       
+       
+goBackFromInvoiceEwayBill($("#dash_startdate").val(),$("#dash_enddate").val(),$("#dash_conditionValue").val(),$("#onlyMonth").val(),$("#onlyYear").val());
+       
+});
+
+//from invoice eway bill preview page to invoice eway bill list in dashboard
+function goBackFromInvoiceEwayBill(startdate,enddate,getInvType,onlyMonth,onlyYear){
+	$('.loader').show();
+       document.redirectToBackFrominvoiceEwayBill.action ="./showAllRecordsList";
+       document.redirectToBackFrominvoiceEwayBill.startdate.value = startdate;
+       document.redirectToBackFrominvoiceEwayBill.enddate.value = enddate;
+       document.redirectToBackFrominvoiceEwayBill.getInvType.value = getInvType;
+       document.redirectToBackFrominvoiceEwayBill.onlyMonth.value = onlyMonth;
+       document.redirectToBackFrominvoiceEwayBill.onlyYear.value = onlyYear;
+       document.redirectToBackFrominvoiceEwayBill._csrf_token.value = $("#_csrf_token").val();
+       document.redirectToBackFrominvoiceEwayBill.submit(); 
+       $('.loader').fadeOut("slow");
+}
+
+
+$("#goBackToDashboard").click(function(){
+       
+       goBackFromEwaybillToDashboard($("#onlyMonth").val(),$("#onlyYear").val());
+       
+});
+
+function goBackFromEwaybillToDashboard(onlyMonth,onlyYear){
+	$('.loader').show();
+       document.gotoDashboard.action = "./gotoDashboard";                  
+       document.gotoDashboard.onlyMonth.value = onlyMonth;
+       document.gotoDashboard.onlyYear.value = onlyYear;
+       document.gotoDashboard._csrf_token.value = $("#_csrf_token").val();
+       document.gotoDashboard.submit();
+       $('.loader').fadeOut("slow");
+}
+
+var ewaybillNo=null;
+var ewayBillid=null;
+var ewaybillStatus=null;
+var docDate = null;
+
+
+
+function getEWayBillDetailsPreview(idValue,ewaybillid){
+	$('.loader').show();
+	document.manageInvoice.action = "./getEWayBillsInDashboard";
+	document.manageInvoice.id.value = idValue;
+	document.manageInvoice.ewaybillid.value = ewaybillid;
+	document.manageInvoice._csrf_token.value = $("#_csrf_token").val();
+	document.manageInvoice.submit();
+	$(".loader").fadeOut("slow");
+}
+
+function backToInvoicePage(idValue){
+	$('.loader').show();
+	document.manageInvoice.action = "./getInvoiceDetails";
+	document.manageInvoice.id.value = idValue;
+	document.manageInvoice._csrf_token.value = $("#_csrf_token").val();
+	document.manageInvoice.submit();
+	$(".loader").fadeOut("slow");
+}
+
+
+
+
+
+
+function setValuesInHiddenFields(idValue){
+	$("#refInvoiceId").val(idValue);
+}
+
+function getEwayBillDetailsInPreview(idValue){
+	var location = $("#location").val();
+	var backendResponse = '';
+	 $.ajax({
+			url : "getEwayBillDetailsInPreview",
+			method : "post",
+			data : {id : idValue},
+		//	contentType : "application/json",
+			dataType : "json",
+			headers: {_csrf_token : $("#_csrf_token").val()},
+			async : false,
+			success:function(data,fTextStatus,fRequest){
+				if (isValidSession(data) == 'No') {
+					window.location.href = getDefaultSessionExpirePage();
+					return;
+				}
+
+				if(isValidToken(data) == 'No'){
+					window.location.href = getCsrfErrorPage();
+					return;
+				}
+				
+				console.log(data);
+				if(data.renderData === 'accessDeny'){
+					 $(".loader").fadeOut("slow"); 
+					bootbox.alert("Data is manipulated.", function() {
+						window.location.href =  'home#invoice';
+					});
+				}else{
+					ewaybillNo=data.ewaybillNo;
+					ewayBillid=data.id;
+					ewaybillStatus=data.ewaybillStatus;
+					docDate = new Date(data.docDate);
+					var day = docDate.getDate();
+					var month = docDate.getMonth()+1;
+					var year = docDate.getFullYear();
+					var documentDate = day+"/"+month+"/"+year;
+				//	 $("#etable").html("");
+												 
+							 $("#etable").append(
+									 '<div class="col-md-6">'
+										    +'<strong>eWay Bill No : </strong>'+data.ewaybillNo +'<br>'
+											+'<strong>Generated By : </strong>'+data.gstin+'<br>'
+											+'<strong>Mode : </strong>'+data.modeOfTransportDesc+'<br>'
+											+'<strong>Type : </strong>'+data.supplyType+'-'+data.subSupplyType+''
+									+'</div>'
+									+'<div class="col-sm-6">'
+											+'<strong>Generated Date : </strong>'+data.ewaybill_date+'<br>'
+											+'<strong>Valid Upto : </strong>'+data.ewaybill_valid_upto+'<br>'
+											+'<strong>Approx Distance : </strong>'+data.kmsToBeTravelled+'<br>'
+											+'<strong>Document Details : </strong>'+data.docType+' - '+data.docNo +' - '+documentDate+''
+									+'</div>'
+							 );	
+							 
+							 var label1 = "Transporter Doc. No: ";
+							 var label2 = "Transporter Doc Date: ";	
+							 
+							 if(data.modeOfTransportDesc == 'Road'){
+								 label1 = "Transporter Doc. No: ";
+								 label2 = "Transporter Doc Date: ";
+							 } else if(data.modeOfTransportDesc == 'Rail'){
+								 label1 = "RR No: ";
+								 label2 = "RR Date: ";
+							 }else if(data.modeOfTransportDesc == 'Air'){
+								 label1 = "Airway Bill No: ";
+								 label2 = "Airway Bill Date: ";
+							 }else if(data.modeOfTransportDesc == 'Ship'){
+								 label1 = "Bill of lading No: ";
+								 label2 = "Bill of lading Date: ";
+							 } 
+													
+							 
+							 $("#transportTable").append('<div class="col-md-3"><strong>'+label1+'</strong>'+data.docNo+'</div>'
+			                        + '<div class="col-md-3"><strong>'+label2+'</strong> '+documentDate+'</div>'
+			                        + '<div class="col-md-3"><strong> Transporter ID : </strong>'+data.transporterId+'</div>'
+			                        + '<div class="col-md-3"><strong> Transporter Name : </strong>'+data.transporterName+'</div>'
+							 );						
+								
+								if(data.modeOfTransportDesc == 'Road'){
+										
+										 $("#vehicleDetTable tbody:last-child").append(
+									 				'<tr>'	
+									 					 +'<td>'+data.modeOfTransportDesc+'</td>'
+									                     +'<td>'+data.vehicleNo +'</td>'
+									                     +'<td>'+location+'</td>'
+									                     +'<td>'+data.ewaybill_date+'</td>'
+									                     +'<td>'+data.gstin+'</td>'
+									                     +'<td>-</td>'
+									 				+'</tr>'	
+											 	);
+									 } else {
+										 $("#vehicleDetTable tbody:last-child").append(
+									 				'<tr>'	
+									 					 +'<td>'+data.modeOfTransportDesc+'</td>'
+									                     +'<td>-</td>'
+									                     +'<td>'+location+'</td>'
+									                     +'<td>'+data.ewaybill_date+'</td>'
+									                     +'<td>'+data.gstin+'</td>'
+									                     +'<td>-</td>'
+									 				+'</tr>'	
+											 	);
+									 }
+							 
+									 
+				}
+				setCsrfToken(fRequest.getResponseHeader('_csrf_token'));
+	         },
+	         error: function (data,status,er) {
+	        	 
+	        	 getInternalServerErrorPage();   
+	        }
+		});
+	 $(".loader").fadeOut("slow"); 
+	 return backendResponse;
+}
+
+
+function redirectToInvoiceHistoryPage(){
+	return 'getMyInvoices';
+}
+
+function generateEWayBill(idValue){
+	$('.loader').show();
+	document.manageInvoice.action = "./generateEWayBill";
+	document.manageInvoice.id.value = idValue;
+	document.manageInvoice._csrf_token.value = $("#_csrf_token").val();
+	document.manageInvoice.submit();
+	$(".loader").fadeOut("slow");
+}
+
+
+/*function getEWayBills(idValue){
+	$('.loader').show();
+	document.manageInvoice.action = "./getEWayBillsInDashboard";
+	document.manageInvoice.id.value = idValue;
+	document.manageInvoice._csrf_token.value = $("#_csrf_token").val();
+	document.manageInvoice.submit();
+	$(".loader").fadeOut("slow");
+}*/
+
+
+
+function downloadEWayBills(gstin, invoiceId ){
+	$('.loader').show();
+	document.downloadEWayBill.action = "./downloadEWayBill";
+	document.downloadEWayBill.invoiceId.value = invoiceId;
+	document.downloadEWayBill.gstin.value = gstin;
+	document.downloadEWayBill.ewaybillNo.value = ewaybillNo;
+	document.downloadEWayBill._csrf_token.value = $("#_csrf_token").val();
+	document.downloadEWayBill.submit();
+	$(".loader").fadeOut("slow");
+}
+
+
+function sendEwayBillPdf(gstin, invoiceId) {
+	$('.loader').show();
+	$('#mainPg1').hide();
+	var inputData = {
+		"invoiceId" : invoiceId,
+		"gstin" : gstin,
+		"ewaybillNo" : ewaybillNo,
+	};
+
+	var data = JSON.stringify(inputData);
+	$.ajax({
+		url : "sendEwayBillPdf",
+		method : "post",
+		data : data,
+		contentType : "application/json",
+		dataType : "json",
+		headers: {_csrf_token : $("#_csrf_token").val()},
+		async : false,
+		success : function(json,fTextStatus,fRequest) {
+			
+			if (isValidSession(json) == 'No') {
+				window.location.href = getDefaultSessionExpirePage();
+				return;
+			}
+
+			if(isValidToken(json) == 'No'){
+				window.location.href = getCsrfErrorPage();
+				return;
+			}
+			
+			if (json.status == 'success') {
+				 $(".loader").fadeOut("slow"); 
+				bootbox.alert("E-way Bill PDF sent successfully", function() {
+					getEWayBills(invoiceId);
+				});
+			}
+
+			if (json.status == 'failure') {
+				 $(".loader").fadeOut("slow"); 
+				bootbox.alert("Error while sending E-way Bill Pdf ");
+
+			}
+			setCsrfToken(fRequest.getResponseHeader('_csrf_token'));
+			
+		},
+		error : function(data, status, er) {
+			// alert("error: "+data+" status: "+status+" er:"+er);
+			 getInternalServerErrorPage();   
+		}
+	});
+	$(".loader").fadeOut("slow"); 
+}
+
+function canceleWayBillPage(invoiceId){
+	if(ewaybillStatus == 'GENEWAYBILL'){
+	$('.loader').show();
+	document.cancelEwayBill.action = "./cancelEWayBillPage";
+	document.cancelEwayBill.id.value = invoiceId;
+	document.cancelEwayBill.ewayBillId.value = ewayBillid;
+	document.cancelEwayBill._csrf_token.value = $("#_csrf_token").val();
+	document.cancelEwayBill.submit();
+	$(".loader").fadeOut("slow");
+	} else {
+		bootbox.alert("This E-Way Bill is cancelled already");
+	} 
+}
+
+$(document).ready(function () {
+	if($('#isInvoiceAllowed').val() == 'true'){
+		loadEWaybillTable();
+	}
+	createDataTable('throughInvEwayBillTab');
+	$(".loader").fadeOut("slow"); 
+	$("#backToPreview").click(function(e){
+		$('.loader').show();
+		
+		$("#secondDivId").hide();
+		$("#headerPreview").hide();
+		$("#previewButtons").hide();
+		setValuesInHiddenFields("");
+		setTimeout(function(){
+			$("#firstDivId").show();
+			$("#breadcumheader").show();
+			 $(".loader").fadeOut("slow"); 
+		}, 500);
+	});
+	
+	$("#optionsDiv").click(function(e){
+		$('#optionsMultiDiv').show();
+		$('#optionsDiv').hide();
+		
+	});
+});
+
+
+/*function getEWayBills(invoiceId){
+	var backendResponse1 = '';
+	 $.ajax({
+			url : "getEWayBillsInDashboard",
+			headers: {
+				_csrf_token : $("#_csrf_token").val()
+			},
+			method : "post",
+			data : {id : invoiceId},
+			contentType : "application/json",
+			dataType : "json",
+			async : false,
+			success:function(data,fTextStatus,fRequest){
+				//console.log(json);
+				if (isValidSession(data) == 'No') {
+					window.location.href = getDefaultSessionExpirePage();
+					return;
+				}
+
+				if(isValidToken(data) == 'No'){
+					window.location.href = getCsrfErrorPage();
+					return;
+				}
+				setCsrfToken(fRequest.getResponseHeader('_csrf_token'));
+				if(data.renderData === 'accessDeny'){
+					bootbox.alert("Data is manipulated.", function() {
+						setTimeout(function(){
+							window.location.href = callInvoiceHistoryPage();
+						}, 500);
+					});
+				}else{
+					backendResponse;
+					ewaybillNo=data.ewaybillNo;
+					ewayBillid=data.id;
+					ewaybillStatus=data.ewaybillStatus;
+					docDate = new Date(data.docDate);
+					var day = docDate.getDate();
+					var month = docDate.getMonth()+1;
+					var year = docDate.getFullYear();
+					var documentDate = day+"/"+month+"/"+year;
+				//	 $("#etable").html("");
+												 
+							 $("#userDetailsInPreview").append(
+									 '<div class="col-md-6">'
+									        +'<strong>From</strong>'
+										    +'<strong>GSTIN: </strong>'+data.gstinNo +'<br>'
+											+'<strong>Address: </strong>'+data.gstinAddressMapping.address +'<br>'
+											+'<strong></strong>'+data.gstinAddressMapping.city+'<br>'
+											+'<strong></strong>'+data.gstinAddressMapping.state+'<br>'
+											+'<strong></strong>'+data.gstinAddressMapping.pinCode+''
+									+'</div>'
+									
+							 );	
+							 if(invoiceResponse.invoiceFor  == 'Product'){
+								 if(invoiceResponse.billToShipIsChecked == 'No'){
+									 
+									 bootbox.alert("sagar");
+								 }
+								 
+								 
+							 }
+							
+			
+				}
+	         },
+	         error:function(data,status,er) { 
+	        	 getInternalServerErrorPage();   
+	         }
+		});
+	 return backendResponse1;
+}*/
