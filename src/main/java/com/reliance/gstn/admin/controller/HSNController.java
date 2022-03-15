@@ -127,7 +127,7 @@ public class HSNController {
 	@RequestMapping(value = "/idt/editHSNDetails",method=RequestMethod.POST)
 	public String HSNDetailsEditPage(@ModelAttribute HSNDetails HSNDetails, Model model, HttpServletRequest httpRequest, HttpSession httpSession) {
 		logger.info("Entry");	
-		
+		System.out.println("Here 2");
 		HSNDetails HSNDetailsObj = HSNService.getHSNDetailsById(HSNDetails.getId());
 		model.addAttribute("HSNDetailsObj", HSNDetailsObj);
 		
