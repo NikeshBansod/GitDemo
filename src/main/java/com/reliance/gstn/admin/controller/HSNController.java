@@ -128,6 +128,7 @@ public class HSNController {
 	public String HSNDetailsEditPage(@ModelAttribute HSNDetails HSNDetails, Model model, HttpServletRequest httpRequest, HttpSession httpSession) {
 		logger.info("Entry");	
 		System.out.println("Here 2");
+		System.out.println("Here 3");
 		HSNDetails HSNDetailsObj = HSNService.getHSNDetailsById(HSNDetails.getId());
 		model.addAttribute("HSNDetailsObj", HSNDetailsObj);
 		
