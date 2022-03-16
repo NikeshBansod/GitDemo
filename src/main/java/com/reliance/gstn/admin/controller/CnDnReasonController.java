@@ -32,6 +32,7 @@ public class CnDnReasonController {
 	public @ResponseBody String getCNDNReasonList() {
 		System.out.println("here");
 		System.out.println("Architect here");
+		System.out.println("A coomit here in develop");
 		logger.info("Entry");
 		List<CnDnReason> cndnResonList = cnDnReasonService.listCnDnReason();
 		logger.info("Exit");
