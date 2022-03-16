@@ -33,6 +33,7 @@ public class CnDnReasonController {
 		System.out.println("here");
 		System.out.println("Architect here");
 		System.out.println("A coomit here in develop");
+		System.out.println("A commit here in develop");
 		logger.info("Entry");
 		List<CnDnReason> cndnResonList = cnDnReasonService.listCnDnReason();
 		logger.info("Exit");
