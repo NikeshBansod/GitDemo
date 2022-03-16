@@ -31,6 +31,7 @@ public class CnDnReasonController {
 	@RequestMapping(value = "/getCNDNReasonList", method = RequestMethod.POST)
 	public @ResponseBody String getCNDNReasonList() {
 		System.out.println("here");
+		System.out.println("Architect here");
 		logger.info("Entry");
 		List<CnDnReason> cndnResonList = cnDnReasonService.listCnDnReason();
 		logger.info("Exit");
